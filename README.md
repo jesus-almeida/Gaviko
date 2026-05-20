@@ -261,7 +261,7 @@ Si quieres seguirnos o saber más de nosotros:
 
 ## Notas 📝
 
-- La app es **personal**, hecha por y para Verónica y Gabriel. Si alguien más la encuentra útil, qué bonito, pero no es nuestro objetivo 😅
+- La app es **personal**, hecha por y para Verónica y Gabriel. Si alguien más la encuentra útil, qué bonito, pero no es nuestro objetivo. 😅
 - El Service Worker ya funciona, así que la app se puede instalar y usar offline parcialmente desde ahora.
 - Los datos de tasas de cambio requerirán internet para actualizarse.
 - El diseño prioriza móvil, pero se ve bien en tablets y escritorio.
@@ -278,7 +278,7 @@ Si quieres seguirnos o saber más de nosotros:
 - [ ] Modo oscuro 🌙
 - [ ] Sonidos y notificaciones 🔔
 - [ ] Galería de fotos 📸
-- [ ] Publicar en GitHub Pages o Vercel para tenerla siempre online
+- [ ] Publicar en GitHub Pages o Vercel para tenerla siempre online 🚀
 
 ---
 
