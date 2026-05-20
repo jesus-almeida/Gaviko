@@ -1,10 +1,10 @@
-# G&V
+# Gaviko - Siempre Juntos 💗
 
-> Tu calculadora personal para pasajes y mucho más.
+> Una PWA hecha solo para Verónica y Gabriel. 💗
 
 <div align="center">
 
-![Logo G&V](https://img.shields.io/badge/G%26V-Calculator-FF6B6B?style=for-the-badge&logo=heart&logoColor=white)
+![Logo G&V](https://img.shields.io/badge/G%26V-GAVIKO-FF9EB8?style=for-the-badge&logo=heart&logoColor=white)
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
@@ -14,265 +14,282 @@
 
 ---
 
-## Descripcion del proyecto
+## Descripción 💗
 
-**G&V** es una aplicacion web progresiva (PWA) disenada para facilitar el calculo de pasajes y consultas de tasas en Venezuela. Desarrollada con tecnologias web modernas, ofrece una experiencia rapida, responsiva y accesible desde cualquier dispositivo.
+**Gaviko** es una aplicación web progresiva (PWA) personal, creada con mucho cariño por y para Verónica y Gabriel 💗. El nombre nace de juntar **Ga**briel + **Ve**rónica + **ko** (una sílaba que inventamos porque nos gustó cómo sonaba 😂💗). Es nuestro rinconcito digital: un lugar con herramientas útiles para nuestro día a día, bonito y accesible desde cualquier dispositivo.
 
-Esta aplicacion fue creada con amor para hacer mas facil el dia a dia de quienes necesitan calcular rapidamente costos de transporte y consultar tasas actualizadas.
-
----
-
-## Caracteristicas principales
-
-### 1. Inicio
-Pagina principal con presentacion del proyecto, navegacion rapida a todas las secciones y animaciones fluidas.
-
-### 2. Calculadora de Pasajes
-Permite calcular rapidamente el costo de pasajes basado en la distancia y tarifas configurables. Ideal para estimar viajes en transporte publico.
-
-### 3. Tasas Venezuela
-Panel de consulta de tasas de cambio actuales para Venezuela. Actualizaciones automaticas y historial de tasas recientes.
-
-### 4. Calculadora Basica
-Calculadora clasica para operaciones matematicas basicas: suma, resta, multiplicacion y division.
-
-### 5. Contador de Tiempo Juntos
-Contador emocional que muestra el tiempo transcurrido desde una fecha especial (inicio de relacion/amistad), con cuenta regresiva para proximos eventos.
+No es un producto público ni una app genérica — es algo **nuestro**. 💗
 
 ---
 
-## Tecnologias utilizadas
+## Páginas planificadas 📄💗
 
-| Tecnologia | Descripcion |
-|------------|-------------|
-| **HTML5** | Lenguaje de marcado para la estructura del contenido |
-| **CSS3** | Hojas de estilo para el diseno visual |
-| **JavaScript ES6+** | Logica de aplicacion y manipulacion del DOM |
-| **PWA** | Aplicacion web progresiva con soporte offline |
+### 1. Inicio 🏠
 
-### Caracteristicas tecnicas
-- Arquitectura modular con separation of concerns
-- SPA (Single Page Application) con sistema de enrutamiento
-- Almacenamiento local con LocalStorage
-- Notificaciones push
-- Compatible con pantallas tactiles moviles
+Página principal con presentación, acceso rápido a las secciones y detalles bonitos. 💗
+
+### 2. Calculadora de Pasajes 🚌💗
+
+Para calcular costos de pasajes según distancia y tarifas. Ideal para cuando salimos o vamos a estudiar. 💗
+
+### 3. Tasas Venezuela 💵💗
+
+Consulta de tasas de cambio actualizadas para Venezuela. Con actualización automática y —quizás después— historial. 💗
+
+### 4. Calculadora Básica 🧮💗
+
+Una calculadora simple para operaciones del día a día: suma ➕, resta ➖, multiplicación ✖️ y división ➗. Y —quizás después— también le agregue historial. 💗
+
+### 5. Contador de Tiempo Juntos ⏳💗
+
+El corazón de la app 💗. Muestra el tiempo exacto que llevamos juntos desde el **27 de Noviembre de 2024 a las 10:00 AM**. 💗
 
 ---
 
-## Estructura del proyecto
+## Tecnologías 🛠️💗
+
+| Tecnología     | Uso                                             |
+| -------------- | ----------------------------------------------- |
+| **HTML5**      | Estructura de cada página                       |
+| **CSS3**       | Estilos visuales y diseño responsivo            |
+| **JavaScript** | Lógica, interacción y navegación                |
+| **PWA**        | Instalable en el móvil y funcionamiento offline |
+
+---
+
+## Estado real del proyecto 🚧💗
+
+Esto es un proyecto **en construcción** 🚧. La mayoría del contenido está en fase de scaffolding:
+
+| Parte               | Estado                                |
+| ------------------- | ------------------------------------- |
+| `index.html`        | Esqueleto básico listo                |
+| `pages/*.html`      | HTML vacíos, solo estructura          |
+| `css/`              | Archivos creados pero vacíos          |
+| `js/core/app.js`    | Solo registra el Service Worker       |
+| `js/core/router.js` | Vacío — sin enrutamiento todavía      |
+| `js/pages/`         | Todos vacíos                          |
+| `js/services/`      | Vacíos                                |
+| `js/utils/`         | Vacíos                                |
+| `js/components/`    | Vacíos                                |
+| `service-worker.js` | ✅ Funcional con estrategias de caché |
+| `manifest.json`     | ✅ Configurado para PWA               |
+| `icons/`            | ✅ Iconos listos                      |
+| `images/`           | ✅ Logo y fondo hero listos           |
+
+Básicamente la PWA se instala y el Service Worker funciona, pero las páginas aún no tienen contenido renderizado ni lógica. 💗
+
+---
+
+## Estructura del proyecto 📁💗
 
 ```
-GV-Calculator/
-|
-|-- .github/
-|   |-- workflows/
-|   |   |-- deploy.yml              # Pipeline CI/CD para deploy
-|
-|-- public/
-|   |-- icons/                      # Iconos PWA (multiples tamanos)
-|   |   |-- icon-72x72.png
-|   |   |-- icon-96x96.png
-|   |   |-- icon-128x128.png
-|   |   |-- icon-144x144.png
-|   |   |-- icon-152x152.png
-|   |   |-- icon-192x192.png
-|   |   |-- icon-384x384.png
-|   |   |-- icon-512x512.png
-|   |   |-- maskable-icon.png
-|   |
-|   |-- images/
-|   |   |-- logo.svg                # Logo principal
-|   |   |-- hero-bg.webp            # Imagen de fondo hero
-|   |   |-- gallery/                # Galeria de imagenes
-|   |
-|   |-- sounds/
-|       |-- notification.mp3         # Sonido de notificaciones
-|
-|-- src/
-|   |
-|   |-- css/
-|   |   |-- base/                   # Estilos base
-|   |   |   |-- reset.css           # Reset CSS normalize
-|   |   |   |-- variables.css       # Variables CSS (colores, fuentes)
-|   |   |   |-- typography.css      # Estilos tipograficos
-|   |   |   |-- utilities.css       # Clases utilitarias
-|   |   |
-|   |   |-- components/             # Componentes reutilizables
-|   |   |   |-- buttons.css         # Estilos de botones
-|   |   |   |-- cards.css           # Estilos de tarjetas
-|   |   |   |-- navbar.css          # Navegacion
-|   |   |   |-- footer.css          # Pie de pagina
-|   |   |   |-- loader.css          # Indicador de carga
-|   |   |   |-- modal.css           # Ventanas modales
-|   |   |   |-- toast.css           # Notificaciones toast
-|   |   |
-|   |   |-- layouts/                # Estructuras de layout
-|   |   |   |-- header.css          # Encabezado
-|   |   |   |-- main.css            # Contenedor principal
-|   |   |   |-- container.css       # Contenedor responsivo
-|   |   |
-|   |   |-- pages/                  # Estilos por pagina
-|   |       |-- home.css
-|   |       |-- calculator.css
-|   |       |-- rates.css
-|   |       |-- basic-calculator.css
-|   |       |-- timer.css
-|   |
-|   |-- js/
-|   |   |-- config/
-|   |   |   |-- relationship.js     # Configuracion de relacion
-|   |   |
-|   |   |-- core/                   # Nucleo de la aplicacion
-|   |   |   |-- app.js              # Inicializacion principal
-|   |   |   |-- router.js           # Sistema de rutas
-|   |   |   |-- storage.js          # Manejo de LocalStorage
-|   |   |
-|   |   |-- utils/                  # Utilidades
-|   |   |   |-- helpers.js          # Funciones helper
-|   |   |   |-- formatters.js       # Formateadores de datos
-|   |   |   |-- validators.js       # Validadores
-|   |   |
-|   |   |-- services/               # Servicios externos
-|   |   |   |-- rates-api.js        # API de tasas
-|   |   |   |-- notifications.js    # Servicio de notificaciones
-|   |   |
-|   |   |-- components/             # Componentes JS
-|   |   |   |-- navbar.js           # Componente navbar
-|   |   |   |-- toast.js            # Componente toast
-|   |   |   |-- loader.js           # Componente loader
-|   |   |
-|   |   |-- pages/                  # Logica por pagina
-|   |       |-- home.js
-|   |       |-- calculator.js
-|   |       |-- rates.js
-|   |       |-- basic-calculator.js
-|   |       |-- timer.js
-|   |
-|   |-- pages/                      # Plantillas HTML
-|       |-- index.html
-|       |-- calculator.html
-|       |-- rates.html
-|       |-- basic-calculator.html
-|       |-- timer.html
-|
-|-- sw.js                           # Service Worker
-|-- .gitignore
-|-- package.json
-|-- README.md
+Gaviko/
+│
+├── css/
+│   ├── base/
+│   │   ├── reset.css
+│   │   ├── typography.css
+│   │   ├── utilities.css
+│   │   └── variables.css
+│   ├── components/
+│   │   ├── buttons.css
+│   │   ├── cards.css
+│   │   ├── footer.css
+│   │   ├── loader.css
+│   │   ├── modal.css
+│   │   ├── navbar.css
+│   │   └── toast.css
+│   ├── layouts/
+│   │   ├── container.css
+│   │   ├── header.css
+│   │   └── main.css
+│   └── pages/
+│       ├── basic-calculator.css
+│       ├── calculator.css
+│       ├── home.css
+│       ├── rates.css
+│       └── timer.css
+│
+├── icons/
+│   ├── apple-touch-icon.png
+│   ├── favicon-96x96.png
+│   ├── favicon.ico
+│   ├── favicon.svg
+│   ├── web-app-manifest-192x192.png
+│   └── web-app-manifest-512x512.png
+│
+├── images/
+│   ├── gallery/
+│   ├── hero-bg.webp
+│   └── logo.svg
+│
+├── js/
+│   ├── components/
+│   │   ├── loader.js
+│   │   ├── navbar.js
+│   │   └── toast.js
+│   ├── config/
+│   │   └── relationship.js
+│   ├── core/
+│   │   ├── app.js
+│   │   ├── router.js
+│   │   └── storage.js
+│   ├── pages/
+│   │   ├── basic-calculator.js
+│   │   ├── calculator.js
+│   │   ├── home.js
+│   │   ├── rates.js
+│   │   └── timer.js
+│   ├── services/
+│   │   ├── notifications.js
+│   │   └── rates-api.js
+│   └── utils/
+│       ├── formatters.js
+│       ├── helpers.js
+│       └── validators.js
+│
+├── pages/
+│   ├── basic-calculator.html
+│   ├── calculator.html
+│   ├── rates.html
+│   └── timer.html
+│
+├── social/
+│   ├── avatar.png
+│   ├── og-image.png
+│   └── social-400x400.png
+│
+├── sounds/
+│   └── notification.mp3
+│
+├── index.html
+├── manifest.json
+├── service-worker.js
+├── paleta.txt
+└── README.md
 ```
 
 ---
 
-## Instalacion y ejecucion
+## Instalación y ejecución 🚀💗
 
 ### Prerrequisitos
-- Node.js v18+ (opcional, solo si usas scripts npm)
+
 - Git
+- Un servidor local (Python, Node o PHP)
 
 ### Pasos
 
-1. **Clonar el repositorio**
+1. **Clonar el repo**
+
 ```bash
-git clone https://github.com/usuario/gv-calculator.git
-cd gv-calculator
+git clone https://github.com/jesus-almeida/gaviko.git
+cd gaviko
 ```
 
-2. **Ejecutar con servidor local**
+2. **Levantar un servidor local**
 
-Usando Python:
 ```bash
-# Python 3
+# Con Python
 python -m http.server 8000
 
-# Python 2
-python -m SimpleHTTPServer 8000
-```
-
-Usando Node.js:
-```bash
+# Con Node
 npx serve
-```
 
-Usando PHP:
-```bash
+# Con PHP
 php -S localhost:8000
 ```
 
-3. **Abrir en navegador**
+3. **Abrir en el navegador**
+
 ```
-http://localhost:8000/src/pages/index.html
+http://localhost:8000/index.html
 ```
 
 ---
 
-## Instalacion de PWA en movil
+## Instalación de la PWA en el móvil 📱💗
 
-La aplicacion puede instalarse en tu dispositivo movil como una app nativa:
+Como es una PWA, podemos instalarla en nuestros teléfonos como una app nativa. 💗
 
 ### En Android (Chrome)
 
-1. Abre la aplicacion en Chrome movil
-2. Toca el menu de tres puntos (竖)
-3. Selecciona **"Agregar a pantalla de inicio"** o **"Instalar app"**
-4. Confirma tocando **"Agregar"**
+1. Abrir la app en Chrome
+2. Tocar el menú de tres puntos (⋮)
+3. Seleccionar **"Agregar a pantalla de inicio"** o **"Instalar app"**
+4. Confirmar tocando **"Agregar"**
 
 ### En iOS (Safari)
 
-1. Abre la aplicacion en Safari
-2. Toca el icono de **compartir** (cuadro con flecha)
-3. Desplazate y selecciona **"Agregar a pantalla de inicio"**
-4. Toca **"Agregar"** en la esquina superior derecha
+1. Abrir la app en Safari
+2. Tocar el icono de **compartir** (cuadro con flecha)
+3. Desplazarse y seleccionar **"Agregar a pantalla de inicio"**
+4. Tocar **"Agregar"** en la esquina superior derecha
 
-### Beneficios de la PWA
+### Beneficios
 
-| Beneficio | Descripcion |
-|-----------|-------------|
-| Acceso rapido | Icono en pantalla de inicio |
-| Sin App Store | No requiere descargar de tiendas |
-| Funciona offline | Funciona sin conexion a internet |
-| Peso ligero | Solo unos pocos MB |
-| Actualizaciones automaticas | Siempre tienes la ultima version |
-
----
-
-## Notas importantes
-
-- **Tasas de cambio**: Los datos de tasas se actualizan periodicamente. Se recomienda conexion a internet para obtener valores actualizados.
-
-- **Configuracion personal**: El Contador de Tiempo Juntos permite personalizar la fecha de inicio en el archivo `src/js/config/relationship.js`.
-
-- **Modo offline**: La aplicacion funciona parcialmente sin conexion, pero algunas funcionalidades requeriran internet.
-
-- **Responsive design**: La interfaz esta optimizada para moviles, tablets y escritorio.
-
-- **Accesibilidad**: El proyecto sigue las mejores practicas de accesibilidad web (WCAG).
+| Beneficio                | Descripción                            |
+| ------------------------ | -------------------------------------- |
+| Acceso rápido            | Icono directo en la pantalla de inicio |
+| Sin App Store            | No necesita descargar de tiendas       |
+| Funciona offline         | Se puede usar sin internet             |
+| Peso ligero              | Ocupa muy poco espacio                 |
+| Actualización automática | Siempre tiene la última versión        |
 
 ---
 
-## Roadmap / Futuro
+## Redes sociales 🌐💗
 
-- [ ] Agregar modo oscuro
-- [ ] Soporte multiidioma (ingles/espanol)
-- [ ] Historial de tasas con graficos
-- [ ] Notificaciones push personalizadas
-- [ ] Integracion con APIs de transporte
-- [ ] Tests unitarios
-- [ ] Documentacion API
+Si quieres seguirnos o saber más de nosotros: 💗
+
+### Verónica 💗
+
+| Red       | Usuario             |
+| --------- | ------------------- |
+| TikTok    | @hurtadoveronica    |
+| Instagram | @aandreaa739        |
+
+### Gabriel 💗
+
+| Red       | Usuario             |
+| --------- | ------------------- |
+| TikTok    | @jesusalmeida_24    |
+| Instagram | @jesusalmeida_24    |
 
 ---
 
-## Contribuir
+## Notas 📝💗
 
-1. Haz un fork del proyecto
-2. Crea una rama feature (`git checkout -b feature/nueva-funcion`)
-3. Commit tus cambios (`git commit -m 'Agregar nueva funcion'`)
-4. Push a la rama (`git push origin feature/nueva-funcion`)
-5. Abre un Pull Request
+- La app es **personal**, hecha por y para Verónica y Gabriel 💗. Si alguien más la encuentra útil, qué bonito, pero no es nuestro objetivo 😅💗
+- El Service Worker ya funciona, así que la app se puede instalar y usar offline parcialmente desde ahora 💗
+- Los datos de tasas de cambio requerirán internet para actualizarse 🌐
+- El diseño prioriza móvil, pero se ve bien en tablets y escritorio 📱💗
+
+---
+
+## Roadmap 🗺️💗
+
+- [ ] Dar vida al index — diseño, contenido, fotos nuestras 💗
+- [ ] Implementar el contador de tiempo juntos con nuestra fecha ⏳💗
+- [ ] Construir la calculadora de pasajes 🚌
+- [ ] Conectar tasas Venezuela con datos reales 💵
+- [ ] Calculadora básica 🧮
+- [ ] Modo oscuro 🌙
+- [ ] Sonidos y notificaciones 🔔
+- [ ] Galería de fotos 📸💗
+- [ ] Publicar en GitHub Pages o Vercel para tenerla siempre online 🌐
+
+---
+
+## Nota personal 💗
+
+Este proyecto es un diario de aprendizaje y un regalo digital 💗. Todo lo que está aquí lo hemos ido construyendo paso a paso, y aunque falte mucho, cada línea tiene cariño. Gracias por existir, Mi Vica. 💗
 
 ---
 
 <div align="center">
 
-Hecho con ❤️ para Gabi y Vero
+Hecho con 💗 por Verónica y Gabriel.
 
 </div>
