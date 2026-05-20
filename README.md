@@ -6,7 +6,7 @@
 
 ![Logo G&V](https://img.shields.io/badge/G%26V-GAVIKO-FF9EB8?style=for-the-badge&logo=heart&logoColor=white)
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
-![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
+![CSS3](https://img.shields.io/badge/-CSS-1572B6?style=flat-square&logo=css&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
 ![PWA](https://img.shields.io/badge/PWA-Supported-5A0FC8?style=for-the-badge&logo=pwa&logoColor=white)
 
@@ -16,7 +16,7 @@
 
 ## Descripción
 
-**Gaviko** es una aplicación web progresiva (PWA) personal, creada con mucho cariño por y para Verónica y Gabriel. El nombre nace de juntar **Ga**briel + **Ve**rónica + **ko** (una sílaba que inventamos porque nos gustó cómo sonaba 😂). Es nuestro rinconcito digital: un lugar con herramientas útiles para nuestro día a día, bonito y accesible desde cualquier dispositivo.
+**Gaviko** es una aplicación web progresiva (PWA) personal, creada con mucho cariño por y para Verónica y Gabriel. El nombre nace de juntar **Ga**briel + **V**rón**i**ca + **ko** (una sílaba que inventamos porque nos gustó cómo sonaba 😂). Es nuestro rinconcito digital: un lugar con herramientas útiles para nuestro día a día, bonito y accesible desde cualquier dispositivo.
 
 No es un producto público ni una app genérica — es algo **nuestro**. 💕
 
