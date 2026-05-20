@@ -1,6 +1,6 @@
 # Gaviko - Siempre Juntos 💗
 
-> Una PWA hecha solo para Verónica y Gabriel. 💗
+> Una PWA hecha solo para Verónica y Gabriel.
 
 <div align="center">
 
@@ -14,39 +14,39 @@
 
 ---
 
-## Descripción 💗
+## Descripción
 
-**Gaviko** es una aplicación web progresiva (PWA) personal, creada con mucho cariño por y para Verónica y Gabriel 💗. El nombre nace de juntar **Ga**briel + **Ve**rónica + **ko** (una sílaba que inventamos porque nos gustó cómo sonaba 😂💗). Es nuestro rinconcito digital: un lugar con herramientas útiles para nuestro día a día, bonito y accesible desde cualquier dispositivo.
+**Gaviko** es una aplicación web progresiva (PWA) personal, creada con mucho cariño por y para Verónica y Gabriel. El nombre nace de juntar **Ga**briel + **Ve**rónica + **ko** (una sílaba que inventamos porque nos gustó cómo sonaba 😂). Es nuestro rinconcito digital: un lugar con herramientas útiles para nuestro día a día, bonito y accesible desde cualquier dispositivo.
 
-No es un producto público ni una app genérica — es algo **nuestro**. 💗
+No es un producto público ni una app genérica — es algo **nuestro**. 💕
 
 ---
 
-## Páginas planificadas 📄💗
+## Páginas planificadas 📄
 
 ### 1. Inicio 🏠
 
-Página principal con presentación, acceso rápido a las secciones y detalles bonitos. 💗
+Página principal con presentación, acceso rápido a las secciones y detalles bonitos.
 
-### 2. Calculadora de Pasajes 🚌💗
+### 2. Calculadora de Pasajes 🚌
 
-Para calcular costos de pasajes según distancia y tarifas. Ideal para cuando salimos o vamos a estudiar. 💗
+Para calcular costos de pasajes según distancia y tarifas. Ideal para cuando salimos o vamos a estudiar.
 
-### 3. Tasas Venezuela 💵💗
+### 3. Tasas Venezuela 💵
 
-Consulta de tasas de cambio actualizadas para Venezuela. Con actualización automática y —quizás después— historial. 💗
+Consulta de tasas de cambio actualizadas para Venezuela. Con actualización automática y —quizás después— historial.
 
-### 4. Calculadora Básica 🧮💗
+### 4. Calculadora Básica 🧮
 
-Una calculadora simple para operaciones del día a día: suma ➕, resta ➖, multiplicación ✖️ y división ➗. Y —quizás después— también le agregue historial. 💗
+Una calculadora simple para operaciones del día a día: suma ➕, resta ➖, multiplicación ✖️ y división ➗. Y —quizás después— también le agregue historial.
 
-### 5. Contador de Tiempo Juntos ⏳💗
+### 5. Contador de Tiempo Juntos ⏳
 
-El corazón de la app 💗. Muestra el tiempo exacto que llevamos juntos desde el **27 de Noviembre de 2024 a las 10:00 AM**. 💗
+El corazón de la app. Muestra el tiempo exacto que llevamos juntos desde el **27 de Noviembre de 2024 a las 10:00 AM**. 💗
 
 ---
 
-## Tecnologías 🛠️💗
+## Tecnologías 🛠️
 
 | Tecnología     | Uso                                             |
 | -------------- | ----------------------------------------------- |
@@ -57,9 +57,9 @@ El corazón de la app 💗. Muestra el tiempo exacto que llevamos juntos desde e
 
 ---
 
-## Estado real del proyecto 🚧💗
+## Estado real del proyecto 🚧
 
-Esto es un proyecto **en construcción** 🚧. La mayoría del contenido está en fase de scaffolding:
+Esto es un proyecto **en construcción**. La mayoría del contenido está en fase de scaffolding:
 
 | Parte               | Estado                                |
 | ------------------- | ------------------------------------- |
@@ -77,11 +77,11 @@ Esto es un proyecto **en construcción** 🚧. La mayoría del contenido está e
 | `icons/`            | ✅ Iconos listos                      |
 | `images/`           | ✅ Logo y fondo hero listos           |
 
-Básicamente la PWA se instala y el Service Worker funciona, pero las páginas aún no tienen contenido renderizado ni lógica. 💗
+Básicamente la PWA se instala y el Service Worker funciona, pero las páginas aún no tienen contenido renderizado ni lógica.
 
 ---
 
-## Estructura del proyecto 📁💗
+## Estructura del proyecto 📁
 
 ```
 Gaviko/
@@ -172,7 +172,7 @@ Gaviko/
 
 ---
 
-## Instalación y ejecución 🚀💗
+## Instalación y ejecución 🚀
 
 ### Prerrequisitos
 
@@ -184,8 +184,8 @@ Gaviko/
 1. **Clonar el repo**
 
 ```bash
-git clone https://github.com/jesus-almeida/gaviko.git
-cd gaviko
+git clone https://github.com/jesus-almeida/Gaviko.git
+cd Gaviko
 ```
 
 2. **Levantar un servidor local**
@@ -209,9 +209,9 @@ http://localhost:8000/index.html
 
 ---
 
-## Instalación de la PWA en el móvil 📱💗
+## Instalación de la PWA en el móvil 📱
 
-Como es una PWA, podemos instalarla en nuestros teléfonos como una app nativa. 💗
+Como es una PWA, podemos instalarla en nuestros teléfonos como una app nativa.
 
 ### En Android (Chrome)
 
@@ -239,52 +239,54 @@ Como es una PWA, podemos instalarla en nuestros teléfonos como una app nativa. 
 
 ---
 
-## Redes sociales 🌐💗
+## Redes sociales 🌐
 
-Si quieres seguirnos o saber más de nosotros: 💗
+Si quieres seguirnos o saber más de nosotros:
 
-### Verónica 💗
+### Verónica 💕
 
-| Red       | Usuario             |
-| --------- | ------------------- |
-| TikTok    | @hurtadoveronica    |
-| Instagram | @aandreaa739        |
+| Red       | Usuario                                                 |
+| --------- | ------------------------------------------------------- |
+| TikTok    | [@hurtadoveronica](https://tiktok.com/@hurtadoveronica) |
+| Instagram | [@aandreaa739](https://instagram.com/aandreaa739)       |
 
 ### Gabriel 💗
 
-| Red       | Usuario             |
-| --------- | ------------------- |
-| TikTok    | @jesusalmeida_24    |
-| Instagram | @jesusalmeida_24    |
+| Red       | Usuario                                                   |
+| --------- | --------------------------------------------------------- |
+| TikTok    | [@jesusalmeida_24](https://tiktok.com/@jesusalmeida_24)   |
+| Instagram | [@jesusalmeida_24](https://instagram.com/jesusalmeida_24) |
 
 ---
 
-## Notas 📝💗
+## Notas 📝
 
-- La app es **personal**, hecha por y para Verónica y Gabriel 💗. Si alguien más la encuentra útil, qué bonito, pero no es nuestro objetivo 😅💗
-- El Service Worker ya funciona, así que la app se puede instalar y usar offline parcialmente desde ahora 💗
-- Los datos de tasas de cambio requerirán internet para actualizarse 🌐
-- El diseño prioriza móvil, pero se ve bien en tablets y escritorio 📱💗
+- La app es **personal**, hecha por y para Verónica y Gabriel. Si alguien más la encuentra útil, qué bonito, pero no es nuestro objetivo 😅
+- El Service Worker ya funciona, así que la app se puede instalar y usar offline parcialmente desde ahora.
+- Los datos de tasas de cambio requerirán internet para actualizarse.
+- El diseño prioriza móvil, pero se ve bien en tablets y escritorio.
 
 ---
 
-## Roadmap 🗺️💗
+## Roadmap 🗺️
 
-- [ ] Dar vida al index — diseño, contenido, fotos nuestras 💗
-- [ ] Implementar el contador de tiempo juntos con nuestra fecha ⏳💗
+- [ ] Dar vida al index — diseño, contenido, fotos nuestras 💕
+- [ ] Implementar el contador de tiempo juntos con nuestra fecha ⏳
 - [ ] Construir la calculadora de pasajes 🚌
 - [ ] Conectar tasas Venezuela con datos reales 💵
 - [ ] Calculadora básica 🧮
 - [ ] Modo oscuro 🌙
 - [ ] Sonidos y notificaciones 🔔
-- [ ] Galería de fotos 📸💗
-- [ ] Publicar en GitHub Pages o Vercel para tenerla siempre online 🌐
+- [ ] Galería de fotos 📸
+- [ ] Publicar en GitHub Pages o Vercel para tenerla siempre online
 
 ---
 
-## Nota personal 💗
+## Nota personal 💕
 
-Este proyecto es un diario de aprendizaje y un regalo digital 💗. Todo lo que está aquí lo hemos ido construyendo paso a paso, y aunque falte mucho, cada línea tiene cariño. Gracias por existir, Mi Vica. 💗
+Este proyecto es un diario de aprendizaje y un regalo digital. Todo lo que está aquí lo hemos ido construyendo paso a paso, y aunque falte mucho, cada línea tiene cariño.
+
+Gracias por existir, Mi Vica. 💗💕
 
 ---
 
