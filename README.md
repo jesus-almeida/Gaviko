@@ -4,11 +4,11 @@
 
 <div align="center">
 
-![Logo G&V](https://img.shields.io/badge/G%26V-GAVIKO-FF9EB8?style=for-the-badge&logo=heart&logoColor=white)
+![Badge G&V](https://img.shields.io/badge/G%26V-GAVIKO-FF9EB8?style=for-the-badge&logo=heart&logoColor=white&labelColor=67E8F9)
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
-![CSS3](https://img.shields.io/badge/-CSS-1572B6?style=flat-square&logo=css&logoColor=white)
-![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
-![PWA](https://img.shields.io/badge/PWA-Supported-5A0FC8?style=for-the-badge&logo=pwa&logoColor=white)
+![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=white)
+![PWA](https://img.shields.io/badge/PWA-Soportado-7A22FF?style=for-the-badge&logo=pwa&logoColor=white&labelColor=2F3437)
 
 </div>
 
