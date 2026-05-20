@@ -16,7 +16,7 @@
 
 ## Descripción
 
-**Gaviko** es una aplicación web progresiva (PWA) personal, creada con mucho cariño por y para Verónica y Gabriel. El nombre nace de juntar **Ga**briel + **V**rón**i**ca + **ko** (una sílaba que inventamos porque nos gustó cómo sonaba 😂). Es nuestro rinconcito digital: un lugar con herramientas útiles para nuestro día a día, bonito y accesible desde cualquier dispositivo.
+**Gaviko** es una aplicación web progresiva (PWA) personal, creada con mucho cariño por y para Verónica y Gabriel. El nombre nace de juntar **Ga**briel + **V**erón**i**ca + **ko** (una sílaba que inventamos porque nos gustó cómo sonaba 😂). Es nuestro rinconcito digital: un lugar con herramientas útiles para nuestro día a día, bonito y accesible desde cualquier dispositivo.
 
 No es un producto público ni una app genérica — es algo **nuestro**. 💕
 
