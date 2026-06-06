@@ -22,38 +22,66 @@ No es un producto público ni una app genérica — es algo **nuestro**. 💕
 
 ---
 
-## Páginas planificadas 📄
+## Funcionalidades completadas ✅
 
 ### 1. Inicio 🏠
 
-Página principal con presentación, acceso rápido a las secciones y detalles bonitos.
+- Logo personalizado y mensaje de bienvenida
+- Contador de tiempo juntos desde el **27 de noviembre de 2024, 10:00 AM** (años, meses, días, horas, minutos, segundos)
+- Galería de fotos con placeholders (lista para añadir imágenes reales)
+- Sección "Sobre nosotros" con mensaje personal
+- Redes sociales separadas para Verónica y Gabriel (2 Instagram, 2 TikTok)
+- Frases "Recuerda esto" con sombra y diseño destacado
+- Footer con "Siempre Juntos" y "Para nosotros, con amor"
 
 ### 2. Calculadora de Pasajes 🚌
 
-Para calcular costos de pasajes según distancia y tarifas. Ideal para cuando salimos o vamos a estudiar.
+- Selección de días laborables (Lunes a Viernes) con opciones de asistencia por persona
+- Configuración de tarifas de rutas (Ruta 10, 10-B, Universidad)
+- Gastos adicionales con nombre y monto
+- Cálculo semanal con desglose por persona
+- Persistencia de totales, gastos y configuración en localStorage
+- Botones condicionales: limpiar gastos (si hay), limpiar totales (si > 0)
+- Animaciones al calcular, borrar elementos y desvanecer totales
 
-### 3. Tasas Venezuela 💵
+### 3. Calculadora Básica 🧮
 
-Consulta de tasas de cambio actualizadas para Venezuela. Con actualización automática y —quizás después— historial.
+- Display de operación en curso (ej: "1 + 2")
+- Botones: números, decimales, retroceso (⌫), limpiar (C), porcentaje (%)
+- Operadores: ÷, ×, −, +
+- Historial de operaciones con persistencia en localStorage
+- Animaciones, modo responsive y paleta de colores
 
-### 4. Calculadora Básica 🧮
+### 4. Tasas 💵
 
-Una calculadora simple para operaciones del día a día: suma ➕, resta ➖, multiplicación ✖️ y división ➗. Y —quizás después— también le agregue historial.
+- Conversor de monedas: Dólar BCV, Euro, USDT, Personalizada
+- Campo de monto con icono dinámico que cambia según la moneda
+- Tasa personalizada con valor por defecto 1
+- Conversión bidireccional (dólares ↔ bolívares)
+- Tarjeta con última fecha hábil de actualización del dólar
+- Modal de aviso (sección no terminada, faltan APIs) con animaciones
+- Animaciones en cambio de moneda, icono y aparición de tasa personalizada
 
-### 5. Contador de Tiempo Juntos ⏳
+### 5. Ajustes ⚙️
 
-El corazón de la app. Muestra el tiempo exacto que llevamos juntos desde el **27 de Noviembre de 2024 a las 10:00 AM**. 💗
+- Modo oscuro/claro con toggle y persistencia
+- Notificaciones: toggle desactivado por defecto, solicitud de permiso, botón de prueba
+- Información de la app: versión, repositorio, desarrollador
 
 ---
 
-## Tecnologías 🛠️
+## Características técnicas 🛠️
 
-| Tecnología     | Uso                                             |
-| -------------- | ----------------------------------------------- |
-| **HTML5**      | Estructura de cada página                       |
-| **CSS3**       | Estilos visuales y diseño responsivo            |
-| **JavaScript** | Lógica, interacción y navegación                |
-| **PWA**        | Instalable en el móvil y funcionamiento offline |
+| Característica             | Descripción                                      |
+| -------------------------- | ------------------------------------------------ |
+| **SPA**                    | Navegación basada en hash con router modular     |
+| **Mobile First**           | Diseño responsivo optimizado para móviles        |
+| **PWA**                    | Instalable, funciona offline, Service Worker     |
+| **Tema oscuro/claro**      | Variables CSS con transición suave               |
+| **Persistencia**           | localStorage para historial, configuración, tema |
+| **Notificaciones**         | API de Notification con permiso y prueba         |
+| **Módulos ES6**            | Código modular con imports/exports               |
+| **Arquitectura escalable** | Separación por componentes, páginas y servicios  |
 
 ---
 
@@ -87,86 +115,61 @@ Básicamente la PWA se instala y el Service Worker funciona, pero las páginas a
 Gaviko/
 │
 ├── css/
-│   ├── base/
-│   │   ├── reset.css
-│   │   ├── typography.css
-│   │   ├── utilities.css
-│   │   └── variables.css
-│   ├── components/
-│   │   ├── buttons.css
-│   │   ├── cards.css
-│   │   ├── footer.css
-│   │   ├── loader.css
-│   │   ├── modal.css
-│   │   ├── navbar.css
-│   │   └── toast.css
-│   ├── layouts/
-│   │   ├── container.css
-│   │   ├── header.css
-│   │   └── main.css
-│   └── pages/
-│       ├── basic-calculator.css
-│       ├── calculator.css
-│       ├── home.css
-│       ├── rates.css
-│       └── timer.css
+│ ├── base/
+│ │ ├── reset.css
+│ │ ├── typography.css
+│ │ ├── utilities.css
+│ │ └── variables.css
+│ ├── components/
+│ │ ├── cards.css
+│ │ └── navbar.css
+│ ├── layouts/
+│ │ └── main.css
+│ └── pages/
+│ ├── calculator.css
+│ ├── home.css
+│ ├── pasajes.css
+│ ├── rates.css
+│ └── settings.css
 │
 ├── icons/
-│   ├── apple-touch-icon.png
-│   ├── favicon-96x96.png
-│   ├── favicon.ico
-│   ├── favicon.svg
-│   ├── web-app-manifest-192x192.png
-│   └── web-app-manifest-512x512.png
+│ ├── apple-touch-icon.png
+│ ├── favicon-96x96.png
+│ ├── favicon.ico
+│ ├── favicon.svg
+│ ├── web-app-manifest-192x192.png
+│ └── web-app-manifest-512x512.png
 │
 ├── images/
-│   ├── gallery/
-│   ├── hero-bg.webp
-│   └── logo.svg
+│ ├── gallery/
+│ └── logo.svg
 │
 ├── js/
-│   ├── components/
-│   │   ├── loader.js
-│   │   ├── navbar.js
-│   │   └── toast.js
-│   ├── config/
-│   │   └── relationship.js
-│   ├── core/
-│   │   ├── app.js
-│   │   ├── router.js
-│   │   └── storage.js
-│   ├── pages/
-│   │   ├── basic-calculator.js
-│   │   ├── calculator.js
-│   │   ├── home.js
-│   │   ├── rates.js
-│   │   └── timer.js
-│   ├── services/
-│   │   ├── notifications.js
-│   │   └── rates-api.js
-│   └── utils/
-│       ├── formatters.js
-│       ├── helpers.js
-│       └── validators.js
-│
-├── pages/
-│   ├── basic-calculator.html
-│   ├── calculator.html
-│   ├── rates.html
-│   └── timer.html
+│ ├── components/
+│ │ └── navbar.js
+│ ├── core/
+│ │ ├── app.js
+│ │ ├── router.js
+│ │ └── router-instance.js
+│ ├── pages/
+│ │ ├── calculator.js
+│ │ ├── home.js
+│ │ ├── pasajes.js
+│ │ ├── rates.js
+│ │ └── settings.js
+│ └── services/
+│ └── notifications.js
 │
 ├── social/
-│   ├── avatar.png
-│   ├── og-image.png
-│   └── social-400x400.png
+│ ├── avatar.png
+│ ├── og-image.png
+│ └── social-400x400.png
 │
 ├── sounds/
-│   └── notification.mp3
 │
 ├── index.html
 ├── manifest.json
 ├── service-worker.js
-├── paleta.txt
 └── README.md
 ```
 
@@ -265,20 +268,6 @@ Si quieres seguirnos o saber más de nosotros:
 - El Service Worker ya funciona, así que la app se puede instalar y usar offline parcialmente desde ahora.
 - Los datos de tasas de cambio requerirán internet para actualizarse.
 - El diseño prioriza móvil, pero se ve bien en tablets y escritorio.
-
----
-
-## Roadmap 🗺️
-
-- [ ] Dar vida al index — diseño, contenido, fotos nuestras 💕
-- [ ] Implementar el contador de tiempo juntos con nuestra fecha ⏳
-- [ ] Construir la calculadora de pasajes 🚌
-- [ ] Conectar tasas Venezuela con datos reales 💵
-- [ ] Calculadora básica 🧮
-- [ ] Modo oscuro 🌙
-- [ ] Sonidos y notificaciones 🔔
-- [ ] Galería de fotos 📸
-- [ ] Publicar en GitHub Pages o Vercel para tenerla siempre online 🚀
 
 ---
 
