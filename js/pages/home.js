@@ -93,28 +93,68 @@ export function destroyHome() {
 
 function updateCounter() {
   const now = new Date();
-  let diffMs = now - START_DATE;
-  if (diffMs < 0) {
-    document.getElementById("counterDisplay").innerText =
-      "¡La aventura está por comenzar!";
+  const start = new Date(START_DATE);
+
+  if (now < start) {
+    document.getElementById('counterDisplay').innerText = '¡La aventura está por comenzar!';
     return;
   }
-  let seconds = Math.floor(diffMs / 1000);
-  let minutes = Math.floor(seconds / 60);
-  seconds = seconds % 60;
-  let hours = Math.floor(minutes / 60);
-  minutes = minutes % 60;
-  let days = Math.floor(hours / 24);
-  hours = hours % 24;
-  const years = Math.floor(days / 365);
-  days = days % 365;
-  const months = Math.floor(days / 30);
-  days = days % 30;
-  const pad = (n) => String(n).padStart(2, "0");
-  const displayStr =
-    `${years} año${years !== 1 ? "s" : ""}, ${months} mes${months !== 1 ? "es" : ""}, ${days} día${days !== 1 ? "s" : ""} ` +
-    `${pad(hours)}:${pad(minutes)}:${pad(seconds)}`;
-  document.getElementById("counterDisplay").innerText = displayStr;
+
+  // Calcular años
+  let years = now.getFullYear() - start.getFullYear();
+  let months = now.getMonth() - start.getMonth();
+  let days = now.getDate() - start.getDate();
+
+  // Ajustar días si es negativo
+  if (days < 0) {
+    // Obtener el último día del mes anterior al actual
+    const previousMonth = new Date(now.getFullYear(), now.getMonth(), 0);
+    days += previousMonth.getDate();
+    months--;
+  }
+
+  // Ajustar meses si es negativo
+  if (months < 0) {
+    months += 12;
+    years--;
+  }
+
+  // Calcular horas, minutos, segundos
+  let hours = now.getHours() - start.getHours();
+  let minutes = now.getMinutes() - start.getMinutes();
+  let seconds = now.getSeconds() - start.getSeconds();
+
+  // Ajustar segundos negativos
+  if (seconds < 0) {
+    seconds += 60;
+    minutes--;
+  }
+  // Ajustar minutos negativos
+  if (minutes < 0) {
+    minutes += 60;
+    hours--;
+  }
+  // Ajustar horas negativas (si la hora de inicio fue más tarde en el día)
+  if (hours < 0) {
+    hours += 24;
+    days--;
+    if (days < 0) {
+      const previousMonthDate = new Date(now.getFullYear(), now.getMonth(), 0);
+      days += previousMonthDate.getDate();
+      months--;
+      if (months < 0) {
+        months += 12;
+        years--;
+      }
+    }
+  }
+
+  const pad = (n) => String(n).padStart(2, '0');
+
+  const displayStr = `${years} año${years !== 1 ? 's' : ''}, ${months} mes${months !== 1 ? 'es' : ''}, ${days} día${days !== 1 ? 's' : ''} ` +
+                     `${pad(hours)}:${pad(minutes)}:${pad(seconds)}`;
+
+  document.getElementById('counterDisplay').innerText = displayStr;
 }
 
 function buildGallery() {
