@@ -22,16 +22,16 @@ No es un producto público ni una app genérica — es algo **nuestro**. 💕
 
 ---
 
-## Funcionalidades completadas ✅
+## Funcionalidades ✅
 
 ### 1. Inicio 🏠
 
 - Logo personalizado y mensaje de bienvenida
 - Contador de tiempo juntos desde el **27 de noviembre de 2024, 10:00 AM** (años, meses, días, horas, minutos, segundos)
-- Galería de fotos con placeholders (lista para añadir imágenes reales)
+- Galería de fotos con placeholders (⚠️ Falta agregar las imagenes)
 - Sección "Sobre nosotros" con mensaje personal
 - Redes sociales separadas para Verónica y Gabriel (2 Instagram, 2 TikTok)
-- Frases "Recuerda esto" con sombra y diseño destacado
+- Frase para recordar siempre con sombra y diseño destacado
 - Footer con "Siempre Juntos" y "Para nosotros, con amor"
 
 ### 2. Calculadora de Pasajes 🚌
@@ -61,6 +61,8 @@ No es un producto público ni una app genérica — es algo **nuestro**. 💕
 - Tarjeta con última fecha hábil de actualización del dólar
 - Modal de aviso (sección no terminada, faltan APIs) con animaciones
 - Animaciones en cambio de moneda, icono y aparición de tasa personalizada
+  
+> ⚠️ **En proceso**: Las tasas son simuladas. Próximamente se conectarán a APIs reales.
 
 ### 5. Ajustes ⚙️
 
@@ -87,25 +89,27 @@ No es un producto público ni una app genérica — es algo **nuestro**. 💕
 
 ## Estado real del proyecto 🚧
 
-Esto es un proyecto **en construcción**. La mayoría del contenido está en fase de scaffolding:
+El proyecto está **completamente funcional** como PWA, con todas las vistas implementadas, navegación SPA, persistencia de datos y temas. Las partes pendientes son mejoras futuras o dependen de servicios externos.
 
-| Parte               | Estado                                |
-| ------------------- | ------------------------------------- |
-| `index.html`        | Esqueleto básico listo                |
-| `pages/*.html`      | HTML vacíos, solo estructura          |
-| `css/`              | Archivos creados pero vacíos          |
-| `js/core/app.js`    | Solo registra el Service Worker       |
-| `js/core/router.js` | Vacío — sin enrutamiento todavía      |
-| `js/pages/`         | Todos vacíos                          |
-| `js/services/`      | Vacíos                                |
-| `js/utils/`         | Vacíos                                |
-| `js/components/`    | Vacíos                                |
-| `service-worker.js` | ✅ Funcional con estrategias de caché |
-| `manifest.json`     | ✅ Configurado para PWA               |
-| `icons/`            | ✅ Iconos listos                      |
-| `images/`           | ✅ Logo y fondo hero listos           |
+| Parte                   | Estado                                         |
+| ----------------------- | ---------------------------------------------- |
+| `index.html`            | ✅ Shell completo con meta PWA, fuentes y CSS   |
+| Navegación SPA          | ✅ Router basado en hash con barra inferior     |
+| Vista Inicio            | ✅ Contador, galería, frases y footer           |
+| Vista Calculadora       | ✅ Calculadora básica con historial             |
+| Vista Pasajes           | ✅ Calculadora semanal con persistencia         |
+| Vista Tasas             | ✅ Conversor de monedas y fecha hábil           |
+| Vista Ajustes           | ✅ Tema oscuro, notificaciones e información    |
+| `css/`                  | ✅ Estilos base, componentes y páginas          |
+| `js/`                   | ✅ Módulos ES6 con lógica separada por vista    |
+| `service-worker.js`     | ✅ Estrategias de caché, offline total          |
+| `manifest.json`         | ✅ Configurado para instalación nativa          |
+| `icons/` / `images/`    | ✅ Assets listos                                |
+| APIs de tasas           | 🟡 Simuladas — pendiente conexión a APIs reales |
+| Galería de fotos        | 🟡 Placeholders — pendiente añadir fotos reales |
+| Notificaciones push     | 🟡 Planificado — requiere backend              |
 
-Básicamente la PWA se instala y el Service Worker funciona, pero las páginas aún no tienen contenido renderizado ni lógica.
+La PWA se instala, funciona sin conexión y todas las herramientas están operativas.
 
 ---
 
