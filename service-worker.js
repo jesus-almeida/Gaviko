@@ -1,43 +1,73 @@
-const CACHE_NAME = "gaviko-v1";
+const CACHE_NAME = "gaviko-v2";
 
 const STATIC_ASSETS = [
-  // HTML
   "/",
-  "/pages/index.html",
-  "/pages/calculator.html",
-  "/pages/rates.html",
-  "/pages/basic-calculator.html",
-  "/pages/timer.html",
-
-  // Manifest
+  "/index.html",
   "/manifest.json",
 
-  // Icons
-  "/icons/favicon.ico",
-  "/icons/apple-touch-icon.png",
-  "/icons/web-app-manifest-192x192.png",
-  "/icons/web-app-manifest-512x512.png",
-
-  // Base CSS
-  "/css/base/reset.css",
+  // CSS base
   "/css/base/variables.css",
+  "/css/base/reset.css",
   "/css/base/typography.css",
   "/css/base/utilities.css",
 
-  // Core JS
+  // CSS componentes
+  "/css/components/navbar.css",
+  "/css/components/cards.css",
+
+  // CSS layouts
+  "/css/layouts/main.css",
+
+  // CSS pages
+  "/css/pages/calculator.css",
+  "/css/pages/home.css",
+  "/css/pages/pasajes.css",
+  "/css/pages/rates.css",
+  "/css/pages/settings.css",
+
+  // JS core
   "/js/core/app.js",
   "/js/core/router.js",
-  "/js/core/storage.js",
+  "/js/core/router-instance.js",
+
+  // JS components
+  "/js/components/navbar.js",
+
+  // JS pages
+  "/js/pages/calculator.js",
+  "/js/pages/home.js",
+  "/js/pages/pasajes.js",
+  "/js/pages/rates.js",
+  "/js/pages/settings.js",
+
+  // JS services
+  "/js/services/notifications.js",
+  //"/js/services/rates-api.js",
+
+  // Iconos
+  "/icons/favicon.ico",
+  "/icons/favicon-96x96.png",
+  "/icons/apple-touch-icon.png",
+  "/icons/web-app-manifest-192x192.png",
+  "/icons/web-app-manifest-512x512.png",
+  "/icons/favicon.svg",
+
+  // Imágenes
+  "/images/logo.svg",
+
+  // Sonidos (si existe)
+  //"/sounds/notification.mp3",
 ];
 
 // INSTALL
 self.addEventListener("install", (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
-      return cache.addAll(STATIC_ASSETS);
+      return cache.addAll(STATIC_ASSETS).catch((error) => {
+        console.warn("Algunos recursos no se pudieron cachear:", error);
+      });
     }),
   );
-
   self.skipWaiting();
 });
 
@@ -54,7 +84,6 @@ self.addEventListener("activate", (event) => {
       );
     }),
   );
-
   self.clients.claim();
 });
 
@@ -62,32 +91,26 @@ self.addEventListener("activate", (event) => {
 self.addEventListener("fetch", (event) => {
   const request = event.request;
 
-  // SOLO GET
   if (request.method !== "GET") return;
 
-  // HTML - NETWORK FIRST
+  // HTML - Network first, fallback al index.html cacheado si no hay red
   if (request.destination === "document") {
     event.respondWith(
       fetch(request)
         .then((response) => {
           const copy = response.clone();
-
-          caches.open(CACHE_NAME).then((cache) => {
-            cache.put(request, copy);
-          });
-
+          caches.open(CACHE_NAME).then((cache) => cache.put(request, copy));
           return response;
         })
-
         .catch(() => {
-          return caches.match(request);
+          // Si falla la red, servir el index.html cacheado (app shell)
+          return caches.match("/index.html");
         }),
     );
-
     return;
   }
 
-  // CSS / JS / IMAGES - CACHE FIRST
+  // CSS, JS, imágenes, fuentes - Cache first
   if (
     request.destination === "style" ||
     request.destination === "script" ||
@@ -96,28 +119,41 @@ self.addEventListener("fetch", (event) => {
   ) {
     event.respondWith(
       caches.match(request).then((cachedResponse) => {
-        if (cachedResponse) {
-          return cachedResponse;
-        }
-
-        return fetch(request).then((response) => {
-          const copy = response.clone();
-
-          caches.open(CACHE_NAME).then((cache) => {
-            cache.put(request, copy);
-          });
-
-          return response;
-        });
+        return (
+          cachedResponse ||
+          fetch(request).then((response) => {
+            const copy = response.clone();
+            caches.open(CACHE_NAME).then((cache) => cache.put(request, copy));
+            return response;
+          })
+        );
       }),
     );
-
     return;
   }
 
-  // API REQUESTS - NETWORK FIRST
-
+  // API requests - Network first
   if (request.url.includes("/api/")) {
     event.respondWith(fetch(request).catch(() => caches.match(request)));
   }
+});
+
+// NOTIFICATION CLICK
+self.addEventListener("notificationclick", (event) => {
+  event.notification.close();
+  const urlToOpen = event.notification.data?.url || "/";
+  event.waitUntil(
+    clients
+      .matchAll({ type: "window", includeUncontrolled: true })
+      .then((windowClients) => {
+        for (const client of windowClients) {
+          if (client.url.includes(urlToOpen) && "focus" in client) {
+            return client.focus();
+          }
+        }
+        if (clients.openWindow) {
+          return clients.openWindow(urlToOpen);
+        }
+      }),
+  );
 });
