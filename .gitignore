@@ -1,0 +1,16 @@
+# Dependencias de Node (si algún día agrego un package.json)
+node_modules/
+
+# Archivos de sistema operativo
+.DS_Store
+Thumbs.db
+
+# Archivos de configuración de editores/IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*.bak
+
+# Logs
+*.log
