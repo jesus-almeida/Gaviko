@@ -1,0 +1,28 @@
+{
+  "name": "Gaviko - Siempre Juntos",
+  "short_name": "Gaviko",
+  
+  "start_url": "/?source=pwa",
+  "scope": "/",
+  
+  "display": "standalone",
+  "display_override": ["standalone", "minimal-ui"],
+  
+  "theme_color": "#ffffff",
+  "background_color": "#ffffff",
+  
+  "icons": [
+    {
+      "src": "/icons/web-app-manifest-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icons/web-app-manifest-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
