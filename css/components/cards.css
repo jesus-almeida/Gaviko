@@ -1,0 +1,26 @@
+/* ============================================
+   CARDS.CSS
+   Estilos base para tarjetas reutilizables.
+   ============================================ */
+
+.card {
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--color-border);
+  transition:
+    background var(--transition),
+    box-shadow var(--transition);
+}
+
+.card-title {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--color-text);
+}

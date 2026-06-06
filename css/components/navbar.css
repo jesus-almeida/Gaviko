@@ -1,0 +1,118 @@
+/* ============================================
+   NAVBAR.CSS
+   Barra de navegación inferior fija.
+   Estilo mobile-first, similar a app nativa.
+   ============================================ */
+
+.bottom-nav {
+  /* Posicionamiento */
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  /* Ancho máximo igual al contenedor de la app */
+  max-width: 500px;
+  width: 100%;
+  margin: 0 auto;
+
+  /* Apariencia */
+  background-color: var(--color-surface);
+  border-top: 1px solid var(--color-border);
+  border-radius: 24px 24px 0 0;
+  padding: 8px 12px 12px;
+
+  /* Comportamiento flex */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  /* Sombras */
+  box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.05);
+
+  /* Capa por encima del contenido */
+  z-index: 100;
+
+  /* Transiciones para tema */
+  transition:
+    background-color var(--transition),
+    border-color var(--transition);
+}
+
+/* Cada botón de navegación */
+.nav-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+
+  /* Reset de botón */
+  background: none;
+  border: none;
+  cursor: pointer;
+
+  /* Tipografía */
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--color-text-muted);
+
+  /* Espaciado interno y forma */
+  padding: 6px 0;
+  border-radius: var(--radius-md);
+
+  /* Transiciones */
+  transition:
+    color var(--transition),
+    background-color var(--transition),
+    transform 0.1s ease;
+
+  /* Accesibilidad: foco visible */
+  outline: none;
+}
+
+/* Icono dentro del nav-item */
+.nav-item i {
+  font-size: 22px;
+  margin-bottom: 2px;
+}
+
+/* Estado activo */
+.nav-item.active {
+  color: var(--color-primary);
+  background-color: rgba(255, 197, 214, 0.2); /* color primario con opacidad */
+}
+
+/* Estado hover en escritorio (mantener legibilidad) */
+.nav-item:hover {
+  color: var(--color-primary);
+}
+
+/* Estado presionado: efecto de escala */
+.nav-item:active {
+  transform: scale(0.96);
+}
+
+/* Para el tema oscuro, el color primario puede ser diferente, 
+   se usará la variable y la opacidad se mantiene */
+[data-theme="dark"] .nav-item.active {
+  background-color: rgba(249, 168, 212, 0.15); /* --color-primary en dark */
+}
+
+/* Ajustes para pantallas muy pequeñas (menos de 350px) */
+@media (max-width: 350px) {
+  .nav-item {
+    font-size: 10px;
+    gap: 2px;
+  }
+  .nav-item i {
+    font-size: 20px;
+  }
+}
+
+/* Foco visible para accesibilidad */
+.nav-item:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
