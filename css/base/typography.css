@@ -1,0 +1,126 @@
+/* ============================================
+   TYPOGRAPHY.CSS
+   Define la carga de fuentes, escala tipográfica,
+   pesos y estilos base de texto para toda la app.
+   ============================================ */
+
+/* 1. Cargar fuente Inter desde Google Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+
+/* 2. Estilos base del body (refuerzo) */
+body {
+  font-family:
+    "Inter",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    sans-serif;
+  font-weight: 400;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* 3. Escala tipográfica base (mobile first) */
+html {
+  font-size: 16px; /* Base para cálculos con rem */
+}
+
+/* 4. Headings */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 600;
+  line-height: 1.3;
+  margin-bottom: 0.5rem;
+  color: var(--color-text);
+}
+
+h1 {
+  font-size: 2rem;
+} /* 32px */
+h2 {
+  font-size: 1.5rem;
+} /* 24px */
+h3 {
+  font-size: 1.25rem;
+} /* 20px */
+h4 {
+  font-size: 1.125rem;
+} /* 18px */
+h5 {
+  font-size: 1rem;
+} /* 16px */
+h6 {
+  font-size: 0.875rem;
+} /* 14px */
+
+/* 5. Párrafos */
+p {
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--color-text);
+  margin-bottom: 1rem;
+}
+
+/* 6. Texto pequeño / muted */
+small,
+.text-small {
+  font-size: 0.8125rem; /* 13px */
+  color: var(--color-text-muted);
+}
+
+.text-muted {
+  color: var(--color-text-muted);
+}
+
+/* 7. Links */
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: color var(--transition);
+}
+
+a:hover,
+a:focus-visible {
+  color: var(--color-primary-hover);
+  text-decoration: underline;
+}
+
+/* 8. Selecciones */
+::selection {
+  background-color: var(--color-primary);
+  color: #1f2937;
+}
+
+/* 9. Responsive: ajustar escala en pantallas más grandes */
+@media (min-width: 768px) {
+  html {
+    font-size: 18px;
+  }
+
+  h1 {
+    font-size: 2.25rem;
+  }
+  h2 {
+    font-size: 1.75rem;
+  }
+  h3 {
+    font-size: 1.5rem;
+  }
+}
+
+/* 10. Reducir movimiento si el usuario lo prefiere */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
