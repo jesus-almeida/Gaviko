@@ -1,0 +1,224 @@
+/* ============================================
+   PASAJES.CSS
+   Estilos para la calculadora de pasajes.
+   ============================================ */
+
+/* Tarjetas con borde suave */
+.pasajes-card {
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  padding: 18px;
+  margin-bottom: 15px;
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-sm);
+  transition:
+    background var(--transition),
+    border-color var(--transition);
+}
+
+.pasajes-card h2 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: var(--color-text);
+}
+
+/* Contenedor de día */
+.day-card {
+  background: var(--color-bg);
+  border-radius: var(--radius-md);
+  padding: 14px;
+  margin-bottom: 10px;
+  border: 1px solid var(--color-border);
+}
+
+.day-card h3 {
+  font-size: 1rem;
+  margin-bottom: 8px;
+}
+
+/* Selects y inputs (heredan estilo global pero ajustamos) */
+.pasajes-card select,
+.pasajes-card input {
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: 40px;
+  padding: 8px 14px;
+  font-size: 0.95rem;
+  color: var(--color-text);
+  width: auto;
+  margin: 6px 4px;
+  outline: none;
+  transition: border var(--transition);
+}
+
+.pasajes-card select:focus,
+.pasajes-card input:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 2px rgba(255, 197, 214, 0.4);
+}
+
+/* Checkbox estilizado */
+.pasajes-card input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--color-primary);
+  margin-left: 8px;
+  vertical-align: middle;
+}
+
+/* Botones */
+.btn-primary {
+  background: var(--color-primary);
+  border: none;
+  padding: 12px 20px;
+  border-radius: 40px;
+  font-weight: 600;
+  color: #1f2937;
+  width: 100%;
+  font-size: 1rem;
+  cursor: pointer;
+  transition:
+    background var(--transition),
+    transform 0.1s;
+}
+
+.btn-primary:hover,
+.btn-primary:active {
+  background: var(--color-primary-hover);
+  transform: scale(0.98);
+}
+
+.btn-secondary {
+  background: var(--color-secondary);
+  border: none;
+  padding: 10px 16px;
+  border-radius: 40px;
+  font-weight: 500;
+  color: #1f2937;
+  cursor: pointer;
+  transition: background var(--transition);
+}
+
+.btn-secondary:hover {
+  background: var(--color-secondary-hover);
+}
+
+.btn-outline {
+  background: transparent;
+  border: 1px solid var(--color-border);
+  padding: 8px 14px;
+  border-radius: 40px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  color: var(--color-text);
+}
+
+.delete-btn {
+  background: var(--color-error);
+  border: none;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+/* Config panel colapsable */
+.config-panel {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition:
+    max-height 0.35s ease,
+    opacity 0.35s ease,
+    margin 0.35s ease;
+  margin-bottom: 0;
+}
+
+.config-panel.active {
+  max-height: 300px;
+  opacity: 1;
+  margin-bottom: 15px;
+}
+
+/* Total semanal */
+.total-card {
+  background: linear-gradient(
+    135deg,
+    var(--color-primary),
+    var(--color-secondary)
+  );
+  color: #1f2937;
+  padding: 20px;
+  border-radius: var(--radius-lg);
+  text-align: center;
+  font-weight: 700;
+  font-size: 1.3rem;
+  line-height: 1.6;
+  margin-top: 20px;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.total-card.animate {
+  transform: scale(1.03);
+  box-shadow: 0 0 20px rgba(255, 197, 214, 0.4);
+}
+
+/* Gastos extra */
+.expense-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--color-bg);
+  padding: 8px 12px;
+  border-radius: var(--radius-md);
+  margin-top: 6px;
+  transition:
+    transform 0.2s ease,
+    opacity 0.2s ease;
+}
+
+.expense-item.removing {
+  opacity: 0;
+  transform: translateX(40px);
+}
+
+/* Botones de la calculadora de pasajes (específicos) */
+.button-group {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+  flex-wrap: wrap;
+}
+
+.button-group button {
+  flex: 1;
+}
+
+/* Animación para desvanecer la tarjeta del total */
+.total-card.fade-out {
+  opacity: 0;
+  transform: scale(0.95);
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
+}
+
+/* Animación para los números del total */
+.fade-numbers {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+/* Responsive */
+@media (max-width: 500px) {
+  .pasajes-card {
+    padding: 14px;
+  }
+  .total-card {
+    font-size: 1.1rem;
+  }
+}

@@ -1,0 +1,198 @@
+/* ============================================
+   RATES.CSS
+   Estilos para la vista de Tasas.
+   Incluye animaciones para el modal y las tarjetas.
+   ============================================ */
+
+/* Contenedor del conversor */
+.converter-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.converter-row label {
+  font-weight: 500;
+  color: var(--color-text);
+  min-width: 80px;
+}
+
+.converter-row input,
+.converter-row select {
+  flex: 1;
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: 40px;
+  padding: 10px 14px;
+  font-size: 1rem;
+  color: var(--color-text);
+  outline: none;
+  transition:
+    border var(--transition),
+    box-shadow var(--transition);
+}
+
+.converter-row input:focus,
+.converter-row select:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 2px rgba(255, 197, 214, 0.4);
+}
+
+/* Fila de tasa personalizada con animación de expansión */
+#customRateRow {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition:
+    max-height 0.3s ease,
+    opacity 0.3s ease,
+    margin 0.3s ease;
+  margin-bottom: 0;
+}
+
+#customRateRow.active {
+  max-height: 80px;
+  opacity: 1;
+  margin-bottom: 12px;
+}
+
+/* Botón de reinicio */
+.btn-reset {
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  padding: 10px 20px;
+  border-radius: 40px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  color: var(--color-text);
+  transition: all var(--transition);
+  width: 100%;
+  margin-top: 8px;
+}
+
+.btn-reset:hover {
+  background: var(--color-surface);
+  border-color: var(--color-primary);
+}
+
+/* Tarjeta de fecha */
+.date-display {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+.day-display {
+  font-size: 1rem;
+  color: var(--color-text-muted);
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+/* ========== MODAL CON ANIMACIONES ========== */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
+  opacity: 1;
+  visibility: visible;
+  transition:
+    opacity 0.3s ease,
+    visibility 0.3s ease;
+}
+
+/* Cuando se oculta, se aplica esta clase */
+.modal-overlay.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.modal-card {
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  max-width: 400px;
+  width: 90%;
+  text-align: center;
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--color-border);
+  transform: scale(1);
+  transition: transform 0.3s ease;
+}
+
+.modal-overlay.hidden .modal-card {
+  transform: scale(0.8);
+}
+
+.modal-card i {
+  font-size: 3rem;
+  color: var(--color-warning);
+  margin-bottom: 16px;
+  animation: pulse 1.5s infinite;
+}
+
+.modal-card p {
+  margin-bottom: 20px;
+  font-size: 1rem;
+  color: var(--color-text);
+}
+
+.modal-close-btn {
+  background: var(--color-primary);
+  border: none;
+  padding: 10px 24px;
+  border-radius: 40px;
+  font-weight: 600;
+  color: #1f2937;
+  cursor: pointer;
+  transition: background var(--transition);
+}
+
+.modal-close-btn:hover {
+  background: var(--color-primary-hover);
+}
+
+/* Animación de pulso para el icono de alerta */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Animación de entrada para la vista (opcional) */
+.card {
+  animation: fadeInUp 0.4s ease both;
+}
+
+#currencyIcon {
+  transition:
+    opacity 0.15s ease,
+    transform 0.15s ease;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
