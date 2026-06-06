@@ -1,0 +1,13 @@
+/* ============================================
+   MAIN.CSS
+   Estilos para el contenedor principal.
+   Garantiza scroll y evita que la navbar fija
+   tape el contenido.
+   ============================================ */
+
+.main-content {
+  padding: 20px 18px 80px 18px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  min-height: 100vh;
+}
