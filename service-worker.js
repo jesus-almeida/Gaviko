@@ -1,62 +1,61 @@
 const CACHE_NAME = "gaviko-v2";
 
 const STATIC_ASSETS = [
-  "/",
-  "/index.html",
-  "/manifest.json",
+  "./",
+  "./index.html",
+  "./manifest.json",
 
   // CSS base
-  "/css/base/variables.css",
-  "/css/base/reset.css",
-  "/css/base/typography.css",
-  "/css/base/utilities.css",
+  "./css/base/variables.css",
+  "./css/base/reset.css",
+  "./css/base/typography.css",
+  "./css/base/utilities.css",
 
   // CSS componentes
-  "/css/components/navbar.css",
-  "/css/components/cards.css",
+  "./css/components/navbar.css",
+  "./css/components/cards.css",
 
   // CSS layouts
-  "/css/layouts/main.css",
+  "./css/layouts/main.css",
 
   // CSS pages
-  "/css/pages/calculator.css",
-  "/css/pages/home.css",
-  "/css/pages/pasajes.css",
-  "/css/pages/rates.css",
-  "/css/pages/settings.css",
+  "./css/pages/calculator.css",
+  "./css/pages/home.css",
+  "./css/pages/pasajes.css",
+  "./css/pages/rates.css",
+  "./css/pages/settings.css",
 
   // JS core
-  "/js/core/app.js",
-  "/js/core/router.js",
-  "/js/core/router-instance.js",
+  "./js/core/app.js",
+  "./js/core/router.js",
+  "./js/core/router-instance.js",
 
   // JS components
-  "/js/components/navbar.js",
+  "./js/components/navbar.js",
 
   // JS pages
-  "/js/pages/calculator.js",
-  "/js/pages/home.js",
-  "/js/pages/pasajes.js",
-  "/js/pages/rates.js",
-  "/js/pages/settings.js",
+  "./js/pages/calculator.js",
+  "./js/pages/home.js",
+  "./js/pages/pasajes.js",
+  "./js/pages/rates.js",
+  "./js/pages/settings.js",
 
   // JS services
-  "/js/services/notifications.js",
-  //"/js/services/rates-api.js",
+  "./js/services/notifications.js",
 
   // Iconos
-  "/icons/favicon.ico",
-  "/icons/favicon-96x96.png",
-  "/icons/apple-touch-icon.png",
-  "/icons/web-app-manifest-192x192.png",
-  "/icons/web-app-manifest-512x512.png",
-  "/icons/favicon.svg",
+  "./icons/favicon.ico",
+  "./icons/favicon-96x96.png",
+  "./icons/apple-touch-icon.png",
+  "./icons/web-app-manifest-192x192.png",
+  "./icons/web-app-manifest-512x512.png",
+  "./icons/favicon.svg",
 
   // Imágenes
-  "/images/logo.svg",
+  "./images/logo.svg",
 
   // Sonidos (si existe)
-  //"/sounds/notification.mp3",
+  //"./sounds/notification.mp3",
 ];
 
 // INSTALL
@@ -104,7 +103,7 @@ self.addEventListener("fetch", (event) => {
         })
         .catch(() => {
           // Si falla la red, servir el index.html cacheado (app shell)
-          return caches.match("/index.html");
+          return caches.match("./index.html");
         }),
     );
     return;
