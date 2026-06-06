@@ -2,9 +2,24 @@
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=yes"
+    />
 
-    <!-- PWA -->
+    <!-- ========== EVITAR FOUC: aplicar tema oscuro de inmediato ========== -->
+    <script>
+      (function () {
+        const savedTheme = localStorage.getItem("theme");
+        if (savedTheme === "dark") {
+          document.documentElement.setAttribute("data-theme", "dark");
+        } else {
+          document.documentElement.removeAttribute("data-theme");
+        }
+      })();
+    </script>
+
+    <!-- ========== PWA ========== -->
     <link rel="manifest" href="/manifest.json" />
     <meta name="theme-color" content="#ffffff" />
 
@@ -14,24 +29,84 @@
     <meta name="apple-mobile-web-app-title" content="Gaviko" />
     <meta name="apple-mobile-web-app-status-bar-style" content="default" />
 
-    <!-- Icons -->
+    <!-- iOS Splash Screen -->
+    <link rel="apple-touch-startup-image" href="/icons/apple-touch-icon.png" />
+    
+    <!-- Color de la barra de estado -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+
+    <!-- Iconos -->
     <link
       rel="icon"
       type="image/png"
       sizes="96x96"
       href="/icons/favicon-96x96.png"
     />
-
-    <!-- Apple -->
     <link
       rel="apple-touch-icon"
       sizes="180x180"
       href="/icons/apple-touch-icon.png"
     />
 
+    <!-- ========== CSS BASE ========== -->
+    <link rel="stylesheet" href="css/base/variables.css" />
+    <link rel="stylesheet" href="css/base/reset.css" />
+    <link rel="stylesheet" href="css/base/typography.css" />
+    <link rel="stylesheet" href="css/base/utilities.css" />
+    <!-- ========== CSS COMPONETS ========== -->
+    <link rel="stylesheet" href="css/components/navbar.css" />
+    <link rel="stylesheet" href="css/components/cards.css" />
+    <!-- ========== CSS PAGES ========== -->
+    <link rel="stylesheet" href="css/pages/home.css" />
+    <link rel="stylesheet" href="css/pages/calculator.css" />
+    <link rel="stylesheet" href="css/pages/pasajes.css" />
+    <link rel="stylesheet" href="css/pages/rates.css" />
+    <link rel="stylesheet" href="css/pages/settings.css" />
+    <!-- ========== CSS LAYOUTS ========== -->
+    <link rel="stylesheet" href="css/layouts/main.css" />
+
+    <!-- ========== FONT AWESOME (iconos) ========== -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+
     <title>Gaviko - Inicio</title>
   </head>
   <body>
-    <script src="/js/core/app.js"></script>
+    <!-- Contenedor principal de la app (simula un móvil en desktop) -->
+    <div class="app-container max-w-app mx-auto">
+      <!-- Contenido dinámico gestionado por el router -->
+      <main class="main-content" id="mainContent">
+        <!-- Aquí se renderizarán las vistas (Inicio, Calculadora, etc.) -->
+      </main>
+
+      <!-- Barra de navegación inferior fija -->
+      <nav class="bottom-nav">
+        <button class="nav-item" data-nav="calculadora">
+          <i class="fas fa-calculator"></i>
+          <span>Calculadora</span>
+        </button>
+        <button class="nav-item" data-nav="pasajes">
+          <i class="fas fa-bus"></i>
+          <span>Pasajes</span>
+        </button>
+        <button class="nav-item" data-nav="inicio">
+          <i class="fas fa-home"></i>
+          <span>Inicio</span>
+        </button>
+        <button class="nav-item" data-nav="tasa">
+          <i class="fas fa-dollar-sign"></i>
+          <span>Tasas</span>
+        </button>
+        <button class="nav-item" data-nav="ajustes">
+          <i class="fas fa-cog"></i>
+          <span>Ajustes</span>
+        </button>
+      </nav>
+    </div>
+
+    <!-- Script principal (módulo ES6, se expandirá en futuros pasos) -->
+    <script src="js/core/app.js" type="module"></script>
   </body>
 </html>
