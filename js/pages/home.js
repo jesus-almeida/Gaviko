@@ -4,8 +4,39 @@
 // frases y redes sociales.
 // ============================================
 
+// CONTADOR
 const START_DATE = new Date("2024-11-27T10:00:00-04:00");
 let counterInterval = null;
+// Galeria
+let currentLightboxIndex = 0;
+let isAnimating = false;
+
+const galleryImages = [
+  {
+    src: "./images/gallery/image0.jpeg",
+    date: "2026-05-02",
+  },
+  {
+    src: "./images/gallery/image1.jpeg",
+    date: "2026-05-02",
+  },
+  {
+    src: "./images/gallery/image2.jpeg",
+    date: "2026-05-07",
+  },
+  {
+    src: "./images/gallery/image3.jpeg",
+    date: "2026-04-30",
+  },
+  {
+    src: "./images/gallery/image4.jpeg",
+    date: "2026-06-07",
+  },
+  {
+    src: "./images/gallery/image5.jpeg",
+    date: "2025-08-01",
+  },
+];
 
 export function renderHome() {
   return `
@@ -75,6 +106,16 @@ export function renderHome() {
       <p class="footer-main">Siempre Juntos</p>
       <p class="footer-sub">Para nosotros, con amor</p>
     </div>
+
+    <div class="lightbox-overlay hidden" id="lightbox">
+  <div class="lightbox-content">
+    <button class="lightbox-close" id="lightboxClose"><i class="fas fa-times"></i></button>
+    <button class="lightbox-prev" id="lightboxPrev"><i class="fas fa-chevron-left"></i></button>
+    <button class="lightbox-next" id="lightboxNext"><i class="fas fa-chevron-right"></i></button>
+    <img id="lightboxImg" src="" alt="Imagen ampliada">
+    <div class="lightbox-caption" id="lightboxCaption"></div>
+  </div>
+</div>
   `;
 }
 
@@ -82,6 +123,23 @@ export function initHome() {
   updateCounter();
   counterInterval = setInterval(updateCounter, 1000);
   buildGallery();
+
+  // Lightbox events
+  document
+    .getElementById("lightboxClose")
+    ?.addEventListener("click", closeLightbox);
+  document.getElementById("lightboxNext")?.addEventListener("click", nextImage);
+  document.getElementById("lightboxPrev")?.addEventListener("click", prevImage);
+  document.getElementById("lightbox")?.addEventListener("click", (e) => {
+    if (e.target === e.currentTarget) closeLightbox();
+  });
+  document.addEventListener("keydown", (e) => {
+    if (document.getElementById("lightbox")?.classList.contains("hidden"))
+      return;
+    if (e.key === "Escape") closeLightbox();
+    if (e.key === "ArrowRight") nextImage();
+    if (e.key === "ArrowLeft") prevImage();
+  });
 }
 
 export function destroyHome() {
@@ -96,7 +154,8 @@ function updateCounter() {
   const start = new Date(START_DATE);
 
   if (now < start) {
-    document.getElementById('counterDisplay').innerText = '¡La aventura está por comenzar!';
+    document.getElementById("counterDisplay").innerText =
+      "¡La aventura está por comenzar!";
     return;
   }
 
@@ -149,25 +208,130 @@ function updateCounter() {
     }
   }
 
-  const pad = (n) => String(n).padStart(2, '0');
+  const pad = (n) => String(n).padStart(2, "0");
 
-  const displayStr = `${years} año${years !== 1 ? 's' : ''}, ${months} mes${months !== 1 ? 'es' : ''}, ${days} día${days !== 1 ? 's' : ''} ` +
-                     `${pad(hours)}:${pad(minutes)}:${pad(seconds)}`;
+  const displayStr =
+    `${years} año${years !== 1 ? "s" : ""}, ${months} mes${months !== 1 ? "es" : ""}, ${days} día${days !== 1 ? "s" : ""} ` +
+    `${pad(hours)}:${pad(minutes)}:${pad(seconds)}`;
 
-  document.getElementById('counterDisplay').innerText = displayStr;
+  document.getElementById("counterDisplay").innerText = displayStr;
 }
 
 function buildGallery() {
   const grid = document.getElementById("galleryGrid");
   if (!grid) return;
   let html = "";
-  for (let i = 1; i <= 6; i++) {
+  galleryImages.forEach((img, index) => {
     html += `
-      <div class="gallery-item">
-        <i class="fas fa-camera-retro"></i>
-        <span>Foto ${i}</span>
+      <div class="gallery-item" data-index="${index}">
+        <img src="${img.src}" alt="Foto ${index + 1}" loading="lazy">
       </div>
     `;
-  }
+  });
   grid.innerHTML = html;
+
+  document.querySelectorAll(".gallery-item").forEach((item) => {
+    item.addEventListener("click", (e) => {
+      const index = parseInt(item.getAttribute("data-index"));
+      openLightbox(index);
+    });
+  });
+}
+
+function openLightbox(index) {
+  currentLightboxIndex = index;
+  const lightbox = document.getElementById("lightbox");
+  const lightboxImg = document.getElementById("lightboxImg");
+  const lightboxCaption = document.getElementById("lightboxCaption");
+  if (!lightbox || !lightboxImg || !lightboxCaption) return;
+
+  // Preparar imagen y descripción
+  lightboxImg.src = galleryImages[index].src;
+  updateCaptionText(index); // solo cambia el texto, sin animación aún
+  lightboxCaption.classList.remove("visible"); // invisible
+  lightbox.classList.remove("hidden");
+  document.body.style.overflow = "hidden";
+
+  // Forzar reflow para la imagen
+  lightboxImg.classList.remove("active");
+  void lightboxImg.offsetWidth;
+  lightboxImg.classList.add("active");
+
+  // Después de que la imagen empiece a aparecer, mostramos la fecha
+  // Pequeño retraso para que se sincronice con la imagen
+  setTimeout(() => {
+    lightboxCaption.classList.add("visible");
+  }, 50); // casi simultáneo, pero asegura que la transición se vea
+}
+
+function closeLightbox() {
+  const lightbox = document.getElementById("lightbox");
+  const lightboxImg = document.getElementById("lightboxImg");
+  if (!lightbox || !lightboxImg) return;
+  if (isAnimating) return; // evitar múltiples cierres
+
+  isAnimating = true;
+  lightboxImg.classList.remove("active"); // inicia animación de salida
+
+  // Esperar a que termine la transición para ocultar el overlay
+  lightboxImg.addEventListener("transitionend", function handler() {
+    lightbox.classList.add("hidden");
+    document.body.style.overflow = "";
+    isAnimating = false;
+    lightboxImg.removeEventListener("transitionend", handler);
+  });
+}
+
+function updateCaptionText(index) {
+  const captionEl = document.getElementById("lightboxCaption");
+  if (captionEl) {
+    const imgDate = new Date(galleryImages[index].date + "T12:00:00-04:00");
+    const formattedDate = imgDate.toLocaleDateString("es-VE", {
+      weekday: "long",
+      day: "2-digit",
+      month: "long",
+      year: "numeric",
+    });
+    captionEl.textContent =
+      formattedDate.charAt(0).toUpperCase() + formattedDate.slice(1);
+  }
+}
+
+function updateLightboxImage(direction = "next") {
+  const lightboxImg = document.getElementById("lightboxImg");
+  const lightboxCaption = document.getElementById("lightboxCaption");
+  if (!lightboxImg || !lightboxCaption || isAnimating) return;
+
+  isAnimating = true;
+  // Desvanecer imagen y fecha simultáneamente
+  lightboxImg.classList.remove("active");
+  lightboxCaption.classList.remove("visible");
+
+  // Esperar a que termine la transición de la imagen
+  lightboxImg.addEventListener("transitionend", function handler() {
+    // Cambiar imagen
+    lightboxImg.src = galleryImages[currentLightboxIndex].src;
+    // Actualizar texto de la fecha (todavía invisible)
+    updateCaptionText(currentLightboxIndex);
+    // Forzar reflow y mostrar imagen
+    void lightboxImg.offsetWidth;
+    lightboxImg.classList.add("active");
+    // Mostrar fecha con animación
+    lightboxCaption.classList.add("visible");
+    isAnimating = false;
+    lightboxImg.removeEventListener("transitionend", handler);
+  });
+}
+
+function nextImage() {
+  if (isAnimating) return;
+  currentLightboxIndex = (currentLightboxIndex + 1) % galleryImages.length;
+  updateLightboxImage("next");
+}
+
+function prevImage() {
+  if (isAnimating) return;
+  currentLightboxIndex =
+    (currentLightboxIndex - 1 + galleryImages.length) % galleryImages.length;
+  updateLightboxImage("prev");
 }
