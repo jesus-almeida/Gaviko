@@ -106,40 +106,14 @@ export function renderHome() {
       <p class="footer-main">Siempre Juntos</p>
       <p class="footer-sub">Para nosotros, con amor</p>
     </div>
-
-    <div class="lightbox-overlay hidden" id="lightbox">
-  <div class="lightbox-content">
-    <button class="lightbox-close" id="lightboxClose"><i class="fas fa-times"></i></button>
-    <button class="lightbox-prev" id="lightboxPrev"><i class="fas fa-chevron-left"></i></button>
-    <button class="lightbox-next" id="lightboxNext"><i class="fas fa-chevron-right"></i></button>
-    <img id="lightboxImg" src="" alt="Imagen ampliada">
-    <div class="lightbox-caption" id="lightboxCaption"></div>
-  </div>
-</div>
   `;
 }
 
 export function initHome() {
+  ensureLightbox();
   updateCounter();
   counterInterval = setInterval(updateCounter, 1000);
   buildGallery();
-
-  // Lightbox events
-  document
-    .getElementById("lightboxClose")
-    ?.addEventListener("click", closeLightbox);
-  document.getElementById("lightboxNext")?.addEventListener("click", nextImage);
-  document.getElementById("lightboxPrev")?.addEventListener("click", prevImage);
-  document.getElementById("lightbox")?.addEventListener("click", (e) => {
-    if (e.target === e.currentTarget) closeLightbox();
-  });
-  document.addEventListener("keydown", (e) => {
-    if (document.getElementById("lightbox")?.classList.contains("hidden"))
-      return;
-    if (e.key === "Escape") closeLightbox();
-    if (e.key === "ArrowRight") nextImage();
-    if (e.key === "ArrowLeft") prevImage();
-  });
 }
 
 export function destroyHome() {
@@ -215,6 +189,40 @@ function updateCounter() {
     `${pad(hours)}:${pad(minutes)}:${pad(seconds)}`;
 
   document.getElementById("counterDisplay").innerText = displayStr;
+}
+
+function ensureLightbox() {
+  if (document.getElementById("lightbox")) return; // ya existe
+
+  const overlay = document.createElement("div");
+  overlay.className = "lightbox-overlay hidden";
+  overlay.id = "lightbox";
+  overlay.innerHTML = `
+    <div class="lightbox-content">
+      <button class="lightbox-close" id="lightboxClose"><i class="fas fa-times"></i></button>
+      <button class="lightbox-prev" id="lightboxPrev"><i class="fas fa-chevron-left"></i></button>
+      <button class="lightbox-next" id="lightboxNext"><i class="fas fa-chevron-right"></i></button>
+      <img id="lightboxImg" src="" alt="Imagen ampliada">
+      <div class="lightbox-caption" id="lightboxCaption"></div>
+    </div>
+  `;
+  document.body.appendChild(overlay);
+
+  // Configurar eventos una sola vez
+  document
+    .getElementById("lightboxClose")
+    .addEventListener("click", closeLightbox);
+  document.getElementById("lightboxNext").addEventListener("click", nextImage);
+  document.getElementById("lightboxPrev").addEventListener("click", prevImage);
+  overlay.addEventListener("click", (e) => {
+    if (e.target === overlay) closeLightbox();
+  });
+  document.addEventListener("keydown", (e) => {
+    if (overlay.classList.contains("hidden")) return;
+    if (e.key === "Escape") closeLightbox();
+    if (e.key === "ArrowRight") nextImage();
+    if (e.key === "ArrowLeft") prevImage();
+  });
 }
 
 function buildGallery() {
