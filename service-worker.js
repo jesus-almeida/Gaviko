@@ -42,19 +42,29 @@ const STATIC_ASSETS = [
 
   // JS services
   "./js/services/notifications.js",
+  // PARA DESPUES :)
+  //"./js/services/rates-api.js",
 
   // Iconos
-  "./icons/favicon.ico",
-  "./icons/favicon-96x96.png",
   "./icons/apple-touch-icon.png",
+  "./icons/favicon.ico",
+  "./icons/favicon.svg",
+  "./icons/favicon-96x96.png",
   "./icons/web-app-manifest-192x192.png",
   "./icons/web-app-manifest-512x512.png",
-  "./icons/favicon.svg",
 
-  // Imágenes
+  // Imagen logo
   "./images/logo.svg",
 
-  // Sonidos (si existe)
+  // Galeria
+  "./images/gallery/image0.jpeg",
+  "./images/gallery/image1.jpeg",
+  "./images/gallery/image2.jpeg",
+  "./images/gallery/image3.jpeg",
+  "./images/gallery/image4.jpeg",
+  "./images/gallery/image5.jpeg",
+
+  // Sonidos (Despues)
   //"./sounds/notification.mp3",
 ];
 
