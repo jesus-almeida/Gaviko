@@ -29,9 +29,7 @@ export function renderSettings() {
           <span class="slider"></span>
         </label>
       </div>
-      <div id="notifExtra" class="mt-3">
-        <!-- Aquí se mostrará botón de prueba o mensaje -->
-      </div>
+      <div id="notifExtra" class="mt-3"></div>
     </div>
 
     <div class="card">
@@ -42,11 +40,29 @@ export function renderSettings() {
       </div>
       <div class="info-item">
         <span class="info-label">Repositorio</span>
-        <span class="info-value"><a href="https://github.com/jesus-almeida/Gaviko" target="_blank" rel="noopener noreferrer">GitHub <i class="fas fa-external-link-alt"></i></a></span>
+        <span class="info-value"><a href="#" target="_blank" rel="noopener noreferrer">GitHub <i class="fas fa-external-link-alt"></i></a></span>
       </div>
       <div class="info-item">
         <span class="info-label">Desarrollador</span>
         <span class="info-value">Jesús Almeida (GCoder)</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><i class="fas fa-broom"></i> Mantenimiento</div>
+      <button class="btn-reset" id="clearCacheBtn">Limpiar caché</button>
+      <p class="text-muted mt-2">Elimina datos guardados y la caché de la app.</p>
+    </div>
+
+    <!-- Modal de confirmación -->
+    <div class="modal-overlay hidden" id="clearCacheModal">
+      <div class="modal-card">
+        <i class="fas fa-exclamation-triangle" style="color: var(--color-warning); font-size: 2.5rem; margin-bottom: 12px;"></i>
+        <p>¿Estás seguro de borrar todos los datos y la caché?<br>La app se reiniciará.</p>
+        <div style="display: flex; gap: 12px; justify-content: center; margin-top: 16px;">
+          <button class="btn-secondary" id="cancelClearBtn">Cancelar</button>
+          <button class="btn-primary" id="confirmClearBtn" style="background: var(--color-error);">Confirmar</button>
+        </div>
       </div>
     </div>
   `;
@@ -117,6 +133,46 @@ export function initSettings() {
       });
     }
   }
+
+  // Referencias del modal
+  const clearCacheBtn = document.getElementById("clearCacheBtn");
+  const clearCacheModal = document.getElementById("clearCacheModal");
+  const confirmClearBtn = document.getElementById("confirmClearBtn");
+  const cancelClearBtn = document.getElementById("cancelClearBtn");
+
+  // Mostrar modal
+  clearCacheBtn?.addEventListener("click", () => {
+    clearCacheModal.classList.remove("hidden");
+  });
+
+  // Confirmar limpieza
+  confirmClearBtn?.addEventListener("click", () => {
+    localStorage.clear();
+    navigator.serviceWorker.getRegistrations().then((registrations) => {
+      Promise.all(registrations.map((r) => r.unregister())).then(() => {
+        window.location.reload();
+      });
+    });
+  });
+
+  // Cancelar / cerrar modal
+  const closeModal = () => {
+    clearCacheModal.classList.add("hidden");
+  };
+
+  cancelClearBtn?.addEventListener("click", closeModal);
+
+  // Cerrar al hacer clic fuera del card
+  clearCacheModal?.addEventListener("click", (e) => {
+    if (e.target === clearCacheModal) closeModal();
+  });
+
+  // Cerrar con tecla Escape
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && !clearCacheModal.classList.contains("hidden")) {
+      closeModal();
+    }
+  });
 }
 
 /**
