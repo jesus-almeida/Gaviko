@@ -26,11 +26,11 @@ const galleryImages = [
   },
   {
     src: "./images/gallery/image3.jpeg",
-    date: "2026-04-30",
+    date: "2026-05-07",
   },
   {
     src: "./images/gallery/image4.jpeg",
-    date: "2026-06-07",
+    date: "2026-04-30",
   },
   {
     src: "./images/gallery/image5.jpeg",
