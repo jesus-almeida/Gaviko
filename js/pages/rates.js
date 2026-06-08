@@ -96,6 +96,13 @@ export function initTasas() {
     }
   });
 
+  // Cerrar con tecla Escape
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && !modalOverlay.classList.contains("hidden")) {
+      modalOverlay.classList.add("hidden");
+    }
+  });
+
   // Valores por defecto
   if (usdInput) usdInput.value = "1";
   if (customRateInput) customRateInput.value = "1";
