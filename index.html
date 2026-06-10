@@ -22,14 +22,10 @@
 
     <!-- ========== EVITAR FOUC: aplicar tema oscuro de inmediato ========== -->
     <script>
-      (function () {
-        const savedTheme = localStorage.getItem("theme");
-        if (savedTheme === "dark") {
-          document.documentElement.setAttribute("data-theme", "dark");
-        } else {
-          document.documentElement.removeAttribute("data-theme");
-        }
-      })();
+      const savedTheme = localStorage.getItem("theme");
+      if (savedTheme === "dark") {
+        document.documentElement.setAttribute("data-theme", "dark");
+      }
     </script>
 
     <!-- ========== PWA ========== -->
