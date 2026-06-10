@@ -40,7 +40,7 @@ export function renderSettings() {
       </div>
       <div class="info-item">
         <span class="info-label">Repositorio</span>
-        <span class="info-value"><a href="#" target="_blank" rel="noopener noreferrer">GitHub <i class="fas fa-external-link-alt"></i></a></span>
+        <span class="info-value"><a href="https://github.com/jesus-almeida/Gaviko" target="_blank" rel="noopener noreferrer">GitHub <i class="fas fa-external-link-alt"></i></a></span>
       </div>
       <div class="info-item">
         <span class="info-label">Desarrollador</span>
