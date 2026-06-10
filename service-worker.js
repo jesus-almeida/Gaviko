@@ -1,5 +1,5 @@
 // ⚠️ Al modificar assets estáticos (CSS/JS/imágenes), incrementa este número
-const CACHE_NAME = "gaviko-v2";
+const CACHE_NAME = "gaviko-v3";
 
 const STATIC_ASSETS = [
   "./",
@@ -53,6 +53,10 @@ const STATIC_ASSETS = [
   "./icons/favicon-96x96.png",
   "./icons/web-app-manifest-192x192.png",
   "./icons/web-app-manifest-512x512.png",
+
+  // iOS Splash Screen
+  "./splash_screens/iPhone_8_Plus__iPhone_7_Plus__iPhone_6s_Plus__iPhone_6_Plus_landscape.png",
+  "./splash_screens/iPhone_8_Plus__iPhone_7_Plus__iPhone_6s_Plus__iPhone_6_Plus_portrait.png",
 
   // Imagen logo
   "./images/logo.svg",
