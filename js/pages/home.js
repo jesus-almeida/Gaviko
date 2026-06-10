@@ -10,6 +10,7 @@ let counterInterval = null;
 // Galeria
 let currentLightboxIndex = 0;
 let isAnimating = false;
+let lightboxKeydownHandler = null;
 
 const galleryImages = [
   {
@@ -121,6 +122,11 @@ export function destroyHome() {
     clearInterval(counterInterval);
     counterInterval = null;
   }
+
+  if (lightboxKeydownHandler) {
+    document.removeEventListener("keydown", lightboxKeydownHandler);
+    lightboxKeydownHandler = null;
+  }
 }
 
 function updateCounter() {
@@ -217,12 +223,14 @@ function ensureLightbox() {
   overlay.addEventListener("click", (e) => {
     if (e.target === overlay) closeLightbox();
   });
-  document.addEventListener("keydown", (e) => {
+
+  lightboxKeydownHandler = (e) => {
     if (overlay.classList.contains("hidden")) return;
     if (e.key === "Escape") closeLightbox();
     if (e.key === "ArrowRight") nextImage();
     if (e.key === "ArrowLeft") prevImage();
-  });
+  };
+  document.addEventListener("keydown", lightboxKeydownHandler);
 }
 
 function buildGallery() {
