@@ -18,15 +18,17 @@ function updateActiveFromHash() {
   const currentHash = window.location.hash.slice(1) || "inicio";
   const navItems = document.querySelectorAll(".nav-item");
 
-  // Remover active de todos
-  navItems.forEach((btn) => btn.classList.remove("active"));
+  navItems.forEach((btn) => {
+    btn.classList.remove("active");
+    btn.removeAttribute("aria-current");
+  });
 
-  // Agregar active al botón correspondiente
   const activeBtn = document.querySelector(
     `.nav-item[data-nav="${currentHash}"]`,
   );
   if (activeBtn) {
     activeBtn.classList.add("active");
+    activeBtn.setAttribute("aria-current", "page");
   }
 }
 
