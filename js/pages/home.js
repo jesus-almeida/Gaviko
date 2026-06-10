@@ -7,6 +7,7 @@
 // CONTADOR
 const START_DATE = new Date("2024-11-27T10:00:00-04:00");
 let counterInterval = null;
+let counterDisplayEl = null;
 // Galeria
 let currentLightboxIndex = 0;
 let isAnimating = false;
@@ -112,6 +113,7 @@ export function renderHome() {
 
 export function initHome() {
   ensureLightbox();
+  counterDisplayEl = document.getElementById("counterDisplay");
   updateCounter();
   counterInterval = setInterval(updateCounter, 1000);
   buildGallery();
@@ -134,8 +136,8 @@ function updateCounter() {
   const start = new Date(START_DATE);
 
   if (now < start) {
-    document.getElementById("counterDisplay").innerText =
-      "¡La aventura está por comenzar!";
+    if (counterDisplayEl)
+      counterDisplayEl.innerText = "¡La aventura está por comenzar!";
     return;
   }
 
@@ -194,7 +196,7 @@ function updateCounter() {
     `${years} año${years !== 1 ? "s" : ""}, ${months} mes${months !== 1 ? "es" : ""}, ${days} día${days !== 1 ? "s" : ""} ` +
     `${pad(hours)}:${pad(minutes)}:${pad(seconds)}`;
 
-  document.getElementById("counterDisplay").innerText = displayStr;
+  if (counterDisplayEl) counterDisplayEl.innerText = displayStr;
 }
 
 function ensureLightbox() {
