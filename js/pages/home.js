@@ -207,9 +207,9 @@ function ensureLightbox() {
   overlay.id = "lightbox";
   overlay.innerHTML = `
     <div class="lightbox-content">
-      <button class="lightbox-close" id="lightboxClose"><i class="fas fa-times"></i></button>
-      <button class="lightbox-prev" id="lightboxPrev"><i class="fas fa-chevron-left"></i></button>
-      <button class="lightbox-next" id="lightboxNext"><i class="fas fa-chevron-right"></i></button>
+      <button class="lightbox-close" id="lightboxClose" aria-label="Cerrar"><i class="fas fa-times"></i></button>
+      <button class="lightbox-prev" id="lightboxPrev" aria-label="Anterior"><i class="fas fa-chevron-left"></i></button>
+      <button class="lightbox-next" id="lightboxNext" aria-label="Siguiente"><i class="fas fa-chevron-right"></i></button>
       <img id="lightboxImg" src="" alt="Imagen ampliada">
       <div class="lightbox-caption" id="lightboxCaption"></div>
     </div>
