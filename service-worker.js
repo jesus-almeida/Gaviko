@@ -1,3 +1,4 @@
+// ⚠️ Al modificar assets estáticos (CSS/JS/imágenes), incrementa este número
 const CACHE_NAME = "gaviko-v2";
 
 const STATIC_ASSETS = [
