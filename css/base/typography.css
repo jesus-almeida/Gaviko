@@ -4,9 +4,7 @@
    pesos y estilos base de texto para toda la app.
    ============================================ */
 
-/* 1. Cargar fuente Inter desde Google Fonts */
-@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
-/* 2. Estilos base del body (refuerzo) */
+/* Estilos base del body */
 body {
   font-family:
     "Inter",
