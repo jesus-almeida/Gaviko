@@ -72,22 +72,22 @@ export function renderHome() {
       <div class="social-links">
         <div class="social-group">
           <span class="social-label">Verónica</span>
-          <a href="https://instagram.com/aandreaa739" target="_blank" class="social-link" title="Instagram de Verónica">
+          <a href="https://instagram.com/aandreaa739" target="_blank" rel="noopener noreferrer" class="social-link" title="Instagram de Verónica">
             <i class="fab fa-instagram"></i>
             <span>@aandreaa739</span>
           </a>
-          <a href="https://tiktok.com/@hurtadoveronica" target="_blank" class="social-link" title="TikTok de Verónica">
+          <a href="https://tiktok.com/@hurtadoveronica" target="_blank" rel="noopener noreferrer" class="social-link" title="TikTok de Verónica">
             <i class="fab fa-tiktok"></i>
             <span>@hurtadoveronica</span>
           </a>
         </div>
         <div class="social-group">
           <span class="social-label">Gabriel</span>
-          <a href="https://instagram.com/jesusalmeida_24" target="_blank" class="social-link" title="Instagram de Gabriel">
+          <a href="https://instagram.com/jesusalmeida_24" target="_blank" rel="noopener noreferrer" class="social-link" title="Instagram de Gabriel">
             <i class="fab fa-instagram"></i>
             <span>@jesusalmeida_24</span>
           </a>
-          <a href="https://tiktok.com/@jesusalmeida_24" target="_blank" class="social-link" title="TikTok de Gabriel">
+          <a href="https://tiktok.com/@jesusalmeida_24" target="_blank" rel="noopener noreferrer" class="social-link" title="TikTok de Gabriel">
             <i class="fab fa-tiktok"></i>
             <span>@jesusalmeida_24</span>
           </a>
