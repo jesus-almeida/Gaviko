@@ -128,19 +128,18 @@ function renderDays() {
     div.querySelector(".gabrielCheck").checked = state[day].gabriel;
   });
 
-  document.querySelectorAll(".veronicaSelect").forEach((select) => {
-    select.addEventListener("change", (e) => {
-      const day = e.target.dataset.day;
-      state[day].veronica = e.target.value;
+  container.addEventListener("change", (e) => {
+    const select = e.target.closest(".veronicaSelect");
+    if (select) {
+      state[select.dataset.day].veronica = select.value;
       saveState();
-    });
-  });
-  document.querySelectorAll(".gabrielCheck").forEach((check) => {
-    check.addEventListener("change", (e) => {
-      const day = e.target.dataset.day;
-      state[day].gabriel = e.target.checked;
+      return;
+    }
+    const check = e.target.closest(".gabrielCheck");
+    if (check) {
+      state[check.dataset.day].gabriel = check.checked;
       saveState();
-    });
+    }
   });
 }
 
