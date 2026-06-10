@@ -54,21 +54,21 @@ export function renderHome() {
     </div>
 
     <div class="card">
-      <div class="card-title"><i class="fas fa-images"></i> Nuestros momentos</div>
+      <div class="card-title home-card-title"><i class="fas fa-images"></i> Nuestros momentos</div>
       <div class="gallery-grid" id="galleryGrid">
         <!-- Placeholders generados en JS -->
       </div>
     </div>
 
     <div class="card">
-      <div class="card-title"><i class="fas fa-heart"></i> Sobre nosotros</div>
+      <div class="card-title home-card-title"><i class="fas fa-heart"></i> Sobre nosotros</div>
       <p class="about-text">
         Somos Verónica y Gabriel, un equipo que se ama y se apoya. Esta app es un reflejo de nuestro compromiso: construir juntos, día a día.
       </p>
     </div>
 
     <div class="card">
-      <div class="card-title"><i class="fas fa-share-alt"></i> Redes Sociales</div>
+      <div class="card-title home-card-title"><i class="fas fa-share-alt"></i> Redes Sociales</div>
       <div class="social-links">
         <div class="social-group">
           <span class="social-label">Verónica</span>
@@ -96,7 +96,7 @@ export function renderHome() {
     </div>
 
     <div class="card">
-      <div class="card-title"><i class="fas fa-quote-right"></i> Recuerda</div>
+      <div class="card-title home-card-title"><i class="fas fa-quote-right"></i> Recuerda</div>
       <div class="phrase-card">
         <div class="phrase-text">"Se feliz y siempre sonríe"</div>
       </div>
