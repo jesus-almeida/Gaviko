@@ -117,9 +117,6 @@ export function initSettings() {
           notifToggle.checked = false;
           localStorage.setItem("notifications", "disabled");
           updateNotifUI(notifExtra);
-          alert(
-            "No se pueden enviar notificaciones porque el permiso fue denegado. Puedes cambiarlo en la configuración del navegador.",
-          );
         }
       }
     });
@@ -186,12 +183,12 @@ function updateNotifUI(container) {
 
   if (!isNotificationSupported()) {
     html = '<p class="text-muted">Tu navegador no soporta notificaciones.</p>';
-  } else if (!isEnabled) {
-    html =
-      '<p class="text-muted">Activa las notificaciones para probarlas.</p>';
   } else if (permState === "denied") {
     html =
       '<p class="text-warning">Permiso denegado. Cámbialo en la configuración del navegador.</p>';
+  } else if (!isEnabled) {
+    html =
+      '<p class="text-muted">Activa las notificaciones para probarlas.</p>';
   } else if (permState === "default") {
     html = `
       <p class="text-muted">Se necesita permiso para enviar notificaciones.</p>
