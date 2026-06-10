@@ -142,7 +142,7 @@ self.addEventListener("fetch", (event) => {
   }
 
   // API requests - Network first
-  if (request.url.includes("/api/")) {
+  if (new URL(request.url).pathname.includes("/api/")) {
     event.respondWith(fetch(request).catch(() => caches.match(request)));
   }
 });
