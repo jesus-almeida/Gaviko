@@ -248,11 +248,12 @@ function buildGallery() {
   });
   grid.innerHTML = html;
 
-  document.querySelectorAll(".gallery-item").forEach((item) => {
-    item.addEventListener("click", (e) => {
+  grid.addEventListener("click", (e) => {
+    const item = e.target.closest(".gallery-item");
+    if (item) {
       const index = parseInt(item.getAttribute("data-index"));
       openLightbox(index);
-    });
+    }
   });
 }
 
