@@ -8,6 +8,7 @@
   "orientation": "portrait-primary",
   "theme_color": "#f9a8d4",
   "background_color": "#f9a8d4",
+  "categories": ["gaviko", "lifestyle", "utilities", "personal"],
   "icons": [
     {
       "src": "icons/web-app-manifest-192x192.png",
