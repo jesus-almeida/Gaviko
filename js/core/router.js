@@ -8,7 +8,7 @@
 export class Router {
   constructor() {
     this.routes = new Map();
-    this._afterChangeCallback = null; // Callback post-cambio
+    this._afterChangeCallbacks = [];
     window.addEventListener("hashchange", () => this._handleRoute());
   }
 
@@ -31,7 +31,9 @@ export class Router {
    * @param {Function} callback
    */
   onRouteChange(callback) {
-    this._afterChangeCallback = callback;
+    if (typeof callback === "function") {
+      this._afterChangeCallbacks.push(callback);
+    }
   }
 
   /**
@@ -81,9 +83,6 @@ export class Router {
       }),
     );
 
-    // Ejecutar callback de post-cambio (para la navbar u otros)
-    if (typeof this._afterChangeCallback === "function") {
-      this._afterChangeCallback(hash);
-    }
+    this._afterChangeCallbacks.forEach((cb) => cb(hash));
   }
 }
