@@ -1,23 +1,19 @@
 import { Router } from "./router.js";
-import { renderBasicCalculator } from "../pages/calculator.js";
-import { renderPasajes } from "../pages/pasajes.js";
-import { renderHome } from "../pages/home.js";
-import { renderTasas } from "../pages/rates.js";
-import { renderSettings } from "../pages/settings.js";
+import {
+  renderBasicCalculator,
+  initBasicCalculator,
+} from "../pages/calculator.js";
+import { renderPasajes, initPasajes } from "../pages/pasajes.js";
+import { renderHome, initHome, destroyHome } from "../pages/home.js";
+import { renderTasas, initTasas } from "../pages/rates.js";
+import { renderSettings, initSettings } from "../pages/settings.js";
 
 const router = new Router();
 
-//REGISTRAR VISTAS
-
-// Renderizar Inicio
-router.register("inicio", renderHome);
-// Renderizar Calculadora
-router.register("calculadora", renderBasicCalculator);
-// Renderizar Calculadora de Pasajes
-router.register("pasajes", renderPasajes);
-// Renderizar Tasas
-router.register("tasa", renderTasas);
-// Renderizar Ajustes
-router.register("ajustes", renderSettings);
+router.registerRoute("inicio", renderHome, initHome, destroyHome);
+router.registerRoute("calculadora", renderBasicCalculator, initBasicCalculator);
+router.registerRoute("pasajes", renderPasajes, initPasajes);
+router.registerRoute("tasa", renderTasas, initTasas);
+router.registerRoute("ajustes", renderSettings, initSettings);
 
 export default router;

@@ -6,11 +6,6 @@
 
 import router from "./router-instance.js";
 import { initNavbar } from "../components/navbar.js";
-import { initBasicCalculator } from "../pages/calculator.js";
-import { initPasajes } from "../pages/pasajes.js";
-import { initHome, destroyHome } from "../pages/home.js";
-import { initTasas } from "../pages/rates.js";
-import { initSettings } from "../pages/settings.js";
 
 // ---------- Service Worker ----------
 if ("serviceWorker" in navigator) {
@@ -28,27 +23,12 @@ if ("serviceWorker" in navigator) {
 // ---------- Variables de estado de la vista actual ----------
 let currentRoute = null;
 
-// Mapa de inicializadores y destructores
-const viewHandlers = {
-  inicio: { init: initHome, destroy: destroyHome },
-  calculadora: { init: initBasicCalculator, destroy: null },
-  pasajes: { init: initPasajes, destroy: null },
-  tasa: { init: initTasas, destroy: null },
-  ajustes: { init: initSettings, destroy: null },
-};
-
 function initView(route) {
-  // Destruir la vista anterior si tiene destructor
-  if (currentRoute && viewHandlers[currentRoute]?.destroy) {
-    viewHandlers[currentRoute].destroy();
-  }
-
+  const prevHandler = router.getHandler(currentRoute);
+  if (prevHandler?.destroy) prevHandler.destroy();
   currentRoute = route;
-
-  // Inicializar la nueva vista si tiene inicializador
-  if (viewHandlers[route]?.init) {
-    viewHandlers[route].init();
-  }
+  const nextHandler = router.getHandler(route);
+  if (nextHandler?.init) nextHandler.init();
 }
 
 // ---------- Inicialización de la app ----------

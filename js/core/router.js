@@ -25,6 +25,19 @@ export class Router {
     this.routes.set(routeName, renderFn);
   }
 
+  registerRoute(routeName, renderFn, initFn, destroyFn) {
+    this.register(routeName, renderFn);
+    if (!this._routeHandlers) this._routeHandlers = {};
+    this._routeHandlers[routeName] = {
+      init: initFn || null,
+      destroy: destroyFn || null,
+    };
+  }
+
+  getHandler(routeName) {
+    return this._routeHandlers?.[routeName] || null;
+  }
+
   /**
    * Establece un callback que se ejecutará después de cada cambio de ruta exitoso.
    * Recibe el nombre de la ruta como argumento.
