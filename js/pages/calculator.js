@@ -14,6 +14,13 @@ let displayEl = null;
 
 const HISTORY_KEY = "calc_history";
 
+const OPERATORS = {
+  "÷": "/",
+  "×": "*",
+  "−": "-",
+  "+": "+",
+};
+
 export function renderBasicCalculator() {
   return `
     <div class="card">
@@ -65,15 +72,10 @@ export function initBasicCalculator() {
     const btnEl = document.createElement("div");
     btnEl.className = "calc-btn";
 
-    if (
-      btn === "÷" ||
-      btn === "×" ||
-      btn === "−" ||
-      btn === "+" ||
-      btn === "%"
-    ) {
+    if (btn in OPERATORS || btn === "%") {
       btnEl.classList.add("operator");
     }
+
     if (btn === "=") btnEl.classList.add("equal");
     if (btn === "C") btnEl.classList.add("clear");
     if (btn === "⌫") btnEl.classList.add("backspace");
