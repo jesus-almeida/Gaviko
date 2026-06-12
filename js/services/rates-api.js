@@ -12,6 +12,15 @@ const SUPABASE_ANON_KEY =
  * @returns {Promise<{rates: Object, isLive: boolean}>}
  */
 export async function fetchLiveRates() {
+  // Si no hay conexión, ir directo al caché sin intentar fetch
+  if (!navigator.onLine) {
+    const cached = localStorage.getItem("live_rates");
+    if (cached) {
+      return { rates: JSON.parse(cached), isLive: false };
+    }
+    return { rates: { bcv: 1, euro: 1 }, isLive: false };
+  }
+
   try {
     const res = await fetch(`${SUPABASE_URL}/functions/v1/get_rates`, {
       headers: { Authorization: `Bearer ${SUPABASE_ANON_KEY}` },
@@ -35,7 +44,7 @@ export async function fetchLiveRates() {
 
     // Fallback final: valores por defecto
     return {
-      rates: { bcv: 0.01, euro: 0.01 },
+      rates: { bcv: 1, euro: 1 },
       isLive: false,
     };
   }

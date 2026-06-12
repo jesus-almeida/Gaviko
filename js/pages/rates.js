@@ -6,7 +6,7 @@
 
 import { fetchLiveRates, getCachedRates } from "../services/rates-api.js";
 
-let liveRates = { bcv: 0.01, euro: 0.01, custom: 1 };
+let liveRates = { bcv: 1, euro: 1, custom: 1 };
 let currentRate = liveRates.bcv;
 let currentCurrency = "bcv";
 let lastFetchedAt = null;
@@ -73,7 +73,7 @@ export function initTasas() {
   function updateRateStatus(isLive) {
     const statusEl = document.getElementById("rate-status");
     if (statusEl) {
-      statusEl.textContent = isLive ? "En vivo" : "Desconectado.";
+      statusEl.textContent = isLive ? "En vivo" : "Desconectado";
       statusEl.className = isLive ? "status-live" : "status-offline";
     }
   }
