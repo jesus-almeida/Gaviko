@@ -14,15 +14,15 @@ let lastFetchedAt = null;
 export function renderTasas() {
   return `
     <div class="card">
-      <div class="card-title"><i class="fas fa-dollar-sign"></i> Conversor de Moneda
-      <span id="rate-status" class="status-offline"></span>
+      <div class="card-header">
+        <div class="card-title"><i class="fas fa-dollar-sign"></i> Conversor de Moneda</div>
+        <span id="rate-status" class="status-offline"></span>
       </div>
       <div class="converter-row">
         <label for="currencySelect">Moneda:</label>
         <select id="currencySelect">
           <option value="bcv">Dólar BCV</option>
           <option value="euro">Euro</option>
-          <option value="usdt">USDT</option>
           <option value="custom">Personalizada</option>
         </select>
       </div>
@@ -38,14 +38,13 @@ export function renderTasas() {
         <label for="bsInput">Bs.</label>
         <input type="number" id="bsInput" placeholder="0.00" step="any" min="0">
       </div>
-      <button class="btn-reload" id="resetConverterBtn" title="Reiniciar a 1"><i class="fas fa-sync-alt"></i></button>
+      <button class="btn-reload" id="resetConverterBtn" title="Reiniciar"><i class="fas fa-sync-alt"></i> Reiniciar</button>
     </div>
 
     <div class="card">
-      <div class="card-title"><i class="fas fa-calendar-day"></i> Última actualización del dólar</div>
+      <div class="card-title"><i class="fas fa-calendar-day"></i> Última actualización</div>
       <div class="date-display" id="dateDisplay"></div>
       <div class="day-display" id="dayDisplay"></div>
-      <button class="btn-reset" id="refreshDateBtn"><i class="fas fa-sync-alt"></i> Actualizar</button>
     </div>
   `;
 }
@@ -74,7 +73,7 @@ export function initTasas() {
   function updateRateStatus(isLive) {
     const statusEl = document.getElementById("rate-status");
     if (statusEl) {
-      statusEl.textContent = isLive ? "En vivo" : "Offline";
+      statusEl.textContent = isLive ? "En vivo" : "Desconectado.";
       statusEl.className = isLive ? "status-live" : "status-offline";
     }
   }
@@ -91,7 +90,6 @@ export function initTasas() {
   // Elementos de fecha
   const dateDisplay = document.getElementById("dateDisplay");
   const dayDisplay = document.getElementById("dayDisplay");
-  const refreshDateBtn = document.getElementById("refreshDateBtn");
 
   // Valores por defecto
   if (usdInput) usdInput.value = "1";
@@ -116,9 +114,6 @@ export function initTasas() {
           break;
         case "euro":
           currencyIcon.classList.add("fa-euro-sign");
-          break;
-        case "usdt":
-          currencyIcon.classList.add("fa-coins");
           break;
       }
       // Mostrar de nuevo
@@ -181,11 +176,6 @@ export function initTasas() {
   resetConverterBtn?.addEventListener("click", () => {
     resetInputs();
   });
-
-  // Actualizar fecha
-  refreshDateBtn?.addEventListener("click", () => {
-    updateLastUpdateDate(dateDisplay, dayDisplay);
-  });
 }
 
 function convertFromUsd() {
@@ -246,10 +236,12 @@ function updateLastUpdateDate(dateEl, dayEl) {
   const { updatedAt } = getCachedRates();
   const dateToShow = updatedAt || new Date();
   const optionsDate = { year: "numeric", month: "2-digit", day: "2-digit" };
+  const optionsTime = { hour: "2-digit", minute: "2-digit" };
   const optionsDay = { weekday: "long" };
   const formattedDate = dateToShow.toLocaleDateString("es-VE", optionsDate);
+  const formattedTime = dateToShow.toLocaleTimeString("es-VE", optionsTime);
   const dayName = dateToShow.toLocaleDateString("es-VE", optionsDay);
   const dayCapitalized = dayName.charAt(0).toUpperCase() + dayName.slice(1);
   dateEl.textContent = `${dayCapitalized}, ${formattedDate}`;
-  dayEl.textContent = "";
+  dayEl.textContent = formattedTime;
 }
