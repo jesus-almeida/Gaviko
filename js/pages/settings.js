@@ -35,10 +35,6 @@ export function renderSettings() {
     <div class="card">
       <div class="card-title"><i class="fas fa-info-circle"></i> Información</div>
       <div class="info-item">
-        <span class="info-label">Versión</span>
-        <span class="info-value">1.0.0</span>
-      </div>
-      <div class="info-item">
         <span class="info-label">Repositorio</span>
         <span class="info-value"><a href="https://github.com/jesus-almeida/Gaviko/" target="_blank" rel="noopener noreferrer">GitHub <i class="fas fa-external-link-alt"></i></a></span>
       </div>
