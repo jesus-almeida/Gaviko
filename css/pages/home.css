@@ -259,6 +259,7 @@
 
 .social-link:hover {
   color: var(--color-primary);
+  text-decoration: none;
 }
 
 /* Frase */
