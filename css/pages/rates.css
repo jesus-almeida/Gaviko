@@ -196,3 +196,48 @@
     transform: translateY(0);
   }
 }
+
+/* ========== BOTÓN DE RECARGA (ICONO) ========== */
+.btn-reload {
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--color-text);
+  transition: all var(--transition);
+  font-size: 1rem;
+  margin-top: 8px;
+  margin-left: auto;
+}
+
+.btn-reload:hover {
+  background: var(--color-surface);
+  border-color: var(--color-primary);
+  transform: rotate(90deg);
+}
+
+/* ========== INDICADOR DE ESTADO ========== */
+.status-live,
+.status-offline {
+  font-size: 0.75rem;
+  font-weight: 500;
+  padding: 2px 8px;
+  border-radius: 20px;
+  margin-left: 8px;
+  vertical-align: middle;
+}
+
+.status-live {
+  background: rgba(34, 197, 94, 0.15);
+  color: #22c55e;
+}
+
+.status-offline {
+  background: rgba(249, 115, 22, 0.15);
+  color: #f97316;
+}
