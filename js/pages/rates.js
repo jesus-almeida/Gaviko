@@ -1,23 +1,22 @@
 // ============================================
 // RATES.JS
 // Vista de Tasas con conversor, última fecha
-// de actualización del dólar y modal animado.
+// de actualización del dólar.
 // ============================================
 
-const simulatedRates = {
-  bcv: 35.0,
-  euro: 40.0,
-  usdt: 35.5,
-  custom: 1,
-};
+import { fetchLiveRates, getCachedRates } from "../services/rates-api.js";
 
-let currentRate = simulatedRates.bcv;
+let liveRates = { bcv: 0.01, euro: 0.01, custom: 1 };
+let currentRate = liveRates.bcv;
 let currentCurrency = "bcv";
+let lastFetchedAt = null;
 
 export function renderTasas() {
   return `
     <div class="card">
-      <div class="card-title"><i class="fas fa-dollar-sign"></i> Conversor de Moneda</div>
+      <div class="card-title"><i class="fas fa-dollar-sign"></i> Conversor de Moneda
+      <span id="rate-status" class="status-offline"></span>
+      </div>
       <div class="converter-row">
         <label for="currencySelect">Moneda:</label>
         <select id="currencySelect">
@@ -39,7 +38,7 @@ export function renderTasas() {
         <label for="bsInput">Bs.</label>
         <input type="number" id="bsInput" placeholder="0.00" step="any" min="0">
       </div>
-      <button class="btn-reset" id="resetConverterBtn"><i class="fas fa-undo-alt"></i> Reiniciar</button>
+      <button class="btn-reload" id="resetConverterBtn" title="Reiniciar a 1"><i class="fas fa-sync-alt"></i></button>
     </div>
 
     <div class="card">
@@ -47,15 +46,6 @@ export function renderTasas() {
       <div class="date-display" id="dateDisplay"></div>
       <div class="day-display" id="dayDisplay"></div>
       <button class="btn-reset" id="refreshDateBtn"><i class="fas fa-sync-alt"></i> Actualizar</button>
-    </div>
-
-    <!-- Modal de aviso -->
-    <div class="modal-overlay hidden" id="ratesModal">
-      <div class="modal-card">
-        <i class="fas fa-exclamation-triangle"></i>
-        <p>La sección <strong>Tasas</strong> aún no está terminada. Faltan implementar APIs.</p>
-        <button class="modal-close-btn" id="closeModalBtn">Cerrar</button>
-      </div>
     </div>
   `;
 }
@@ -70,38 +60,38 @@ export function initTasas() {
   const resetConverterBtn = document.getElementById("resetConverterBtn");
   const currencyIcon = document.getElementById("currencyIcon");
 
+  // Cargar tasas desde Supabase
+  async function loadRates() {
+    const { rates, isLive } = await fetchLiveRates();
+    liveRates = { ...rates, custom: 1 };
+    currentRate = liveRates[currentCurrency] || 0.01;
+    updateRateStatus(isLive);
+    updateLastUpdateDate(dateDisplay, dayDisplay);
+    if (usdInput.value) convertFromUsd();
+  }
+
+  // Mostrar estado en vivo/offline
+  function updateRateStatus(isLive) {
+    const statusEl = document.getElementById("rate-status");
+    if (statusEl) {
+      statusEl.textContent = isLive ? "En vivo" : "Offline";
+      statusEl.className = isLive ? "status-live" : "status-offline";
+    }
+  }
+
+  // Reiniciar inputs a 1 = tasa actual
+  function resetInputs() {
+    usdInput.value = "1";
+    convertFromUsd();
+  }
+
+  // Cargar tasas al iniciar
+  loadRates();
+
   // Elementos de fecha
   const dateDisplay = document.getElementById("dateDisplay");
   const dayDisplay = document.getElementById("dayDisplay");
   const refreshDateBtn = document.getElementById("refreshDateBtn");
-
-  // Modal
-  const modalOverlay = document.getElementById("ratesModal");
-  const closeModalBtn = document.getElementById("closeModalBtn");
-
-  // Mostrar modal al entrar (con animación)
-  if (modalOverlay) {
-    modalOverlay.classList.remove("hidden");
-  }
-
-  // Cerrar modal con botón
-  closeModalBtn?.addEventListener("click", () => {
-    modalOverlay.classList.add("hidden");
-  });
-
-  // Cerrar modal al hacer clic fuera del card
-  modalOverlay?.addEventListener("click", (e) => {
-    if (e.target === modalOverlay) {
-      modalOverlay.classList.add("hidden");
-    }
-  });
-
-  // Cerrar con tecla Escape
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && !modalOverlay.classList.contains("hidden")) {
-      modalOverlay.classList.add("hidden");
-    }
-  });
 
   // Valores por defecto
   if (usdInput) usdInput.value = "1";
@@ -140,7 +130,7 @@ export function initTasas() {
   // Establecer moneda inicial y calcular
   currencySelect.value = "bcv";
   currentCurrency = "bcv";
-  currentRate = simulatedRates.bcv;
+  currentRate = liveRates.bcv;
   // El icono se establece sin animación al inicio
   currencyIcon.className = "fas fa-dollar-sign";
   currencyIcon.style.transition = "opacity 0.15s, transform 0.15s";
@@ -155,7 +145,7 @@ export function initTasas() {
       currentRate = parseFloat(customRateInput.value) || 0;
     } else {
       customRateRow.classList.remove("active");
-      currentRate = simulatedRates[currentCurrency];
+      currentRate = liveRates[currentCurrency] || 0.01;
     }
     animateIcon(currentCurrency);
     if (usdInput.value) {
@@ -189,14 +179,7 @@ export function initTasas() {
 
   // Reiniciar conversor
   resetConverterBtn?.addEventListener("click", () => {
-    currencySelect.value = "bcv";
-    currentCurrency = "bcv";
-    currentRate = simulatedRates.bcv;
-    customRateRow.classList.remove("active");
-    usdInput.value = "1";
-    customRateInput.value = "1";
-    convertFromUsd();
-    animateIcon("bcv");
+    resetInputs();
   });
 
   // Actualizar fecha
@@ -260,13 +243,13 @@ function getLastBusinessDate() {
 
 function updateLastUpdateDate(dateEl, dayEl) {
   if (!dateEl || !dayEl) return;
-  const lastUpdate = getLastBusinessDate();
+  const { updatedAt } = getCachedRates();
+  const dateToShow = updatedAt || new Date();
   const optionsDate = { year: "numeric", month: "2-digit", day: "2-digit" };
   const optionsDay = { weekday: "long" };
-  const formattedDate = lastUpdate.toLocaleDateString("es-VE", optionsDate); // "dd/mm/aaaa"
-  const dayName = lastUpdate.toLocaleDateString("es-VE", optionsDay);
-  // Capitalizar primera letra
+  const formattedDate = dateToShow.toLocaleDateString("es-VE", optionsDate);
+  const dayName = dateToShow.toLocaleDateString("es-VE", optionsDay);
   const dayCapitalized = dayName.charAt(0).toUpperCase() + dayName.slice(1);
   dateEl.textContent = `${dayCapitalized}, ${formattedDate}`;
-  dayEl.textContent = ""; // Podríamos dejarlo vacío o mostrar "Día hábil anterior"
+  dayEl.textContent = "";
 }
