@@ -1,5 +1,5 @@
 // ⚠️ Al modificar assets estáticos (CSS/JS/imágenes), incrementa este número
-const CACHE_NAME = "gaviko-v3";
+const CACHE_NAME = "gaviko-v4";
 
 const STATIC_ASSETS = [
   "./",
@@ -43,8 +43,7 @@ const STATIC_ASSETS = [
 
   // JS services
   "./js/services/notifications.js",
-  // PARA DESPUES :)
-  //"./js/services/rates-api.js",
+  "./js/services/rates-api.js",
 
   // Iconos
   "./icons/apple-touch-icon.png",
