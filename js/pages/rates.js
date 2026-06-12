@@ -234,14 +234,16 @@ function getLastBusinessDate() {
 function updateLastUpdateDate(dateEl, dayEl) {
   if (!dateEl || !dayEl) return;
   const { updatedAt } = getCachedRates();
-  const dateToShow = updatedAt || new Date();
+  if (!updatedAt) {
+    dateEl.textContent = "Sin datos";
+    dayEl.textContent = "";
+    return;
+  }
   const optionsDate = { year: "numeric", month: "2-digit", day: "2-digit" };
-  const optionsTime = { hour: "2-digit", minute: "2-digit" };
   const optionsDay = { weekday: "long" };
-  const formattedDate = dateToShow.toLocaleDateString("es-VE", optionsDate);
-  const formattedTime = dateToShow.toLocaleTimeString("es-VE", optionsTime);
-  const dayName = dateToShow.toLocaleDateString("es-VE", optionsDay);
+  const formattedDate = updatedAt.toLocaleDateString("es-VE", optionsDate);
+  const dayName = updatedAt.toLocaleDateString("es-VE", optionsDay);
   const dayCapitalized = dayName.charAt(0).toUpperCase() + dayName.slice(1);
   dateEl.textContent = `${dayCapitalized}, ${formattedDate}`;
-  dayEl.textContent = formattedTime;
+  dayEl.textContent = "";
 }

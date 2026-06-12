@@ -32,7 +32,10 @@ export async function fetchLiveRates() {
 
     // Guardar en localStorage
     localStorage.setItem("live_rates", JSON.stringify(data.rates));
-    localStorage.setItem("rates_updated_at", new Date().toISOString());
+    localStorage.setItem(
+      "rates_updated_at",
+      data.updatedAt || new Date().toISOString(),
+    );
 
     return { rates: data.rates, isLive: true };
   } catch (error) {
