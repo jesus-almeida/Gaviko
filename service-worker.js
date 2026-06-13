@@ -15,6 +15,8 @@ const STATIC_ASSETS = [
   // CSS componentes
   "./css/components/navbar.css",
   "./css/components/cards.css",
+  "./css/components/modal.css",
+  "./css/components/buttons.css",
 
   // CSS layouts
   "./css/layouts/main.css",
