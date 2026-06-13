@@ -61,23 +61,22 @@ export function initTasas() {
 
   // Cargar tasas desde Supabase
   async function loadRates() {
-    updateRateStatus(null); // = Cargando...
+    const resetBtn = document.getElementById("resetConverterBtn");
+    resetBtn?.classList.add("spin");
+    updateRateStatus(null); // Cargando...
     const { rates, isLive } = await fetchLiveRates();
     liveRates = { ...rates, custom: 1 };
     currentRate = liveRates[currentCurrency] || 0.01;
     updateRateStatus(isLive);
     updateLastUpdateDate(dateDisplay, dayDisplay);
+    resetBtn?.classList.remove("spin");
     if (usdInput.value) convertFromUsd();
   }
 
   // Mostrar estado en vivo/offline
   function updateRateStatus(isLive) {
     const statusEl = document.getElementById("rate-status");
-    if (!statusEl) return;
-    if (isLive === null) {
-      statusEl.textContent = "Cargando...";
-      statusEl.className = "status-loading";
-    } else {
+    if (statusEl) {
       statusEl.textContent = isLive ? "En vivo" : "Desconectado";
       statusEl.className = isLive ? "status-live" : "status-offline";
     }
@@ -87,6 +86,7 @@ export function initTasas() {
   function resetInputs() {
     usdInput.value = "1";
     convertFromUsd();
+    loadRates(); // Forzar actualización de tasas
   }
 
   // Cargar tasas al iniciar
