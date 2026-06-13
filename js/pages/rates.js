@@ -76,9 +76,17 @@ export function initTasas() {
   // Mostrar estado en vivo/offline
   function updateRateStatus(isLive) {
     const statusEl = document.getElementById("rate-status");
-    if (statusEl) {
+    if (!statusEl) return;
+    // Reiniciar animación
+    statusEl.classList.remove("status-animate");
+    void statusEl.offsetWidth; // Forzar reflow para reiniciar la animación
+    if (isLive === null) {
+      statusEl.textContent = "Cargando...";
+      statusEl.className = "status-loading";
+    } else {
       statusEl.textContent = isLive ? "En vivo" : "Desconectado";
       statusEl.className = isLive ? "status-live" : "status-offline";
+      statusEl.classList.add("status-animate");
     }
   }
 
