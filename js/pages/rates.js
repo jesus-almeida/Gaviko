@@ -21,9 +21,9 @@ export function renderTasas() {
       <div class="converter-row">
         <label for="currencySelect">Moneda:</label>
         <select id="currencySelect">
-          <option value="bcv">$ Dólar BCV</option>
-          <option value="euro">€ Euro</option>
-          <option value="custom">⚙ Personalizada</option>
+          <option value="bcv">Dólar BCV</option>
+          <option value="euro">Euro</option>
+          <option value="custom">Personalizada</option>
         </select>
       </div>
       <div class="converter-row" id="customRateRow">
