@@ -77,9 +77,9 @@ export function renderHome() {
             <i class="fab fa-instagram"></i>
             <span>@aandreaa739</span>
           </a>
-          <a href="https://tiktok.com/@hurtadoveronica" target="_blank" rel="noopener noreferrer" class="social-link" title="TikTok de Verónica">
+          <a href="https://tiktok.com/@hurtadoveronicaa" target="_blank" rel="noopener noreferrer" class="social-link" title="TikTok de Verónica">
             <i class="fab fa-tiktok"></i>
-            <span>@hurtadoveronica</span>
+            <span>@hurtadoveronicaa</span>
           </a>
         </div>
         <div class="social-group">
