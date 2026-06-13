@@ -61,6 +61,7 @@ export function initTasas() {
 
   // Cargar tasas desde Supabase
   async function loadRates() {
+    updateRateStatus(null); // = Cargando...
     const { rates, isLive } = await fetchLiveRates();
     liveRates = { ...rates, custom: 1 };
     currentRate = liveRates[currentCurrency] || 0.01;
@@ -72,7 +73,11 @@ export function initTasas() {
   // Mostrar estado en vivo/offline
   function updateRateStatus(isLive) {
     const statusEl = document.getElementById("rate-status");
-    if (statusEl) {
+    if (!statusEl) return;
+    if (isLive === null) {
+      statusEl.textContent = "Cargando...";
+      statusEl.className = "status-loading";
+    } else {
       statusEl.textContent = isLive ? "En vivo" : "Desconectado";
       statusEl.className = isLive ? "status-live" : "status-offline";
     }

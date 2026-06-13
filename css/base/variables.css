@@ -20,8 +20,11 @@
 
   /* Status */
   --color-success: #4ade80;
+  --color-bg-success: rgba(74, 222, 128, 0.15);
   --color-warning: #facc15;
+  --color-bg-warning: rgba(250, 204, 21, 0.15);
   --color-error: #f87171;
+  --color-bg-error: rgba(248, 113, 113, 0.15);
 
   /* UI */
   --radius-lg: 20px;
