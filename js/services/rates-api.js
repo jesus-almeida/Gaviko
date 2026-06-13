@@ -22,7 +22,7 @@ export async function fetchLiveRates() {
   }
 
   try {
-    const res = await fetch(`${SUPABASE_URL}/functions/v1/get_rates`, {
+    const res = await fetch(`${SUPABASE_URL}/functions/v1/get-rates`, {
       headers: { Authorization: `Bearer ${SUPABASE_ANON_KEY}` },
     });
 
